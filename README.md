@@ -14,11 +14,12 @@ one can manage, use, and follow.
 3. We create the basic train class, which compasses a newRoute() and a getRoute() method, with a depart() and dock() method.
 4. Add to the train class, with the add() method (adding passengers), along with open(), delay(), and revert() method.
 5. Implement this into a visual process, likely using processing.
+
 ?. Have milk and cookies.
 
 ### UML Diagrams
 
- ** Class Train **
+ **Class Train**
 
 | Properties |   Methods   |
 | ---------- | ----------: |
@@ -34,7 +35,7 @@ one can manage, use, and follow.
 |prevStations|	 depart()  |
 |    Cost    |	 revert()  |
 
- ** Passenger **
+ **Passenger**
 
 |   Properties  |     Methods    |
 | ------------- | -------------: |

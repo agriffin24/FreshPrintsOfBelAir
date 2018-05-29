@@ -36,6 +36,8 @@ one can manage, use, and follow.
 
  ** Passenger **
 
+|   Properties  |     Methods    |
+| ------------- | -------------: |
 |  Age		|  isStanding()  |
 |  Gender	|   isSitting()  |
 |  isPregnant	|     onTrain()  |

@@ -10,8 +10,9 @@ a train/line that one can manage, use, and follow.
 ### UML Diagram
 
  ** Class Train **
+
 | Properties |   Methods   |
-| ---------- | ----------  |
+| ---------- | ----------: |
 |   Cars     |	 train()   |
 | Passengers |	getRoute() |
 |   Color    | newRoute()  |

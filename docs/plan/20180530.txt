@@ -1,0 +1,35 @@
+2018-5-30
+
+Plan:
+
+Crucial Jobs:
+ * Making a basic layout for our train and generate that with each train
+ * Making the basic Train, Passenger, and Station classes
+ * Create a train that can move across, stop at a station, and move towards the end of the line
+ * Make a map with routes
+
+Core Components:
+Essential:
+ * Moving train
+ * Map with stations
+ * Passenger counts
+Non-essential:
+ * Top down view of train
+ * Moving Passengers
+
+Prerequisites:
+ * Station and routes
+ * Stations to specialized stations and layouts
+
+Delegation:
+ Single:
+    * Stations
+    * Routes
+ Group:
+    * Trains
+    * Moving the train and user interaction
+
+Timeline:
+ We found out how to create moving objects across a screen today, as well as how to display text on screen.
+ We've roughly 1 week left, leaving us with time to address at least the most simplistic version of our train simulation.
+ 

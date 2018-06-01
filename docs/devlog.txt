@@ -4,7 +4,7 @@ Mohtasim Howlader
 Jackie Li
 pd 8
 ---------------------
-<Project>
+Trains!
 
 
 
@@ -32,7 +32,10 @@ Flesh out each category whenever necessary, appropriate.
 ------------------------------------------
 OBSTACLES OVERCOME
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-<Wow, we so BOSS bc...>
+Learning to create a custom shape:
+  We didn't want to have just a simple built-in shape for our train, but to have a custom made train that the user and observe and admire. We then learn that processing has a built-in function that allows us to create a shape to our heart's desire, allowing us to create a custom train.
+
+
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -43,13 +46,13 @@ maybe some of these will move into the Obs.Ovrcm section...
 
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-<wow! oo! etc!...>
+We can create any shape to our liking in Processing, which is really benefitial to our project, as we want the layout to simulate what looks to be an actual train moving along the screen.
+
 
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-We changed ___ to ___ bc...
-<etc>
-<etc>
+We decided to ignore/de-prioritize the passenger's entitlement to sit down. Instead we will have the user drag as many passengers into the train as possible so that we can incorporate user interaction instead of having them sit back and watch a simulation.
+
 
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -70,9 +73,16 @@ LESSONS LEARNED
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 
-2018-05-dd
+2018-05-31
 --------------------------------------------------------------
-Aidan :: <Thing member did.>
-Mohtasim :: <Thing member did.>
-Jackie :: <Thing member did.>
+Aidan :: Created a UML diagram for the classes Train and Passenger.
+Mohtasim :: Created a custom "train" shape that the user can follow.
+Jackie :: Created a flowchart for the driver class/file that the user follows.
+==============================================================
+
+2018-06-01
+--------------------------------------------------------------
+Aidan ::
+Mohtasim ::
+Jackie ::
 ==============================================================

@@ -1,7 +1,8 @@
 
 ArrayList<Station> stations= new ArrayList<Station>();
 ArrayList<Route> routes = new ArrayList<Route>();
-ArrayList<Train> trees = new ArrayList<Train>();;
+ArrayList<Train> trees = new ArrayList<Train>();
+;
 
 void setup() {
   background(50);
@@ -13,22 +14,26 @@ void setup() {
   createStations();
 
   createRoutes();
-  trees.add(new Train(100,200));
-  trees.add(new Train(500,200));
-
+  
+  trees.add(new Train(100, 200, stations.get(0)));
+  // trees.add(new Train(500,200));
 }
 
 
 void draw() {
+  //background(50);
+  
   for (Station w : stations) {
     w.display();
   }
   for (Route r : routes) {
     r.display();
   }
-  
+
   for (Train t : trees) {
+    t.move();
     t.display();
+
   }
 }
 
@@ -46,7 +51,18 @@ void createStations() {
   stations.add(new Station(700, 600));
   stations.add(new Station(800, 500));
   stations.add(new Station(900, 400));
+
+  createDirections();
 }
+
+
+//creates the distances between x and y between consecutive stations as well as what the next stations for each station is.
+void createDirections() {
+  for (int i = 0; i < stations.size() - 1; i++) {
+    stations.get(i).setDists(stations.get(i+1)); //sets the distances to the next stations
+  }
+}
+
 
 void createRoutes() {
   for (int i=0; i<stations.size()-1; i++) {

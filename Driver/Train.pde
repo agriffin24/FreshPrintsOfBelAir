@@ -6,19 +6,40 @@ class Train {
   //float backX = 0;
   //float backY = 0;
 
+  Station currStat;
+  Station nextStat;
+  
+  float xdir;
+  float ydir;
+  
+  float speed; //since 
 
   //PShape train, front, back, wheel1, wheel2, wheel3;
 
   float xcord, ycord;
-  float trWid = 42;
-  float trLen = 15;
+  float trWid = 42; //train width
+  float trLen = 15; //train length
+  
+  
+  
+  
 
 
-  public Train(float xcor, float ycor) {
+  public Train(float xcor, float ycor, Station star) {
 
     xcord = xcor;
     ycord = ycor;
+    
+    
+    
+    setCurrAndNext(star);
+   
+    
+    setDirs();
 
+
+
+    //commented out because pshapes are annoying
     //train = createShape(GROUP);
 
 
@@ -44,10 +65,38 @@ class Train {
     ////train.addChild(wheel2);
     //train.addChild(wheel3);
   }
+  
+  void setCurrAndNext(Station stuff) {
+    currStat = stuff;
+    
+    nextStat = stuff.getNext();
+  }
+  
+  void setDirs() {
+    xdir = currStat.distX / 100;
+    ydir = currStat.distY / 100;
+  }
+  
+  
+  boolean AtNextStation() {
+    if (xcord == nextStat.xcord) { // only need to check for on x
+        return true;
+    }
+    return false;
+  }
+      
+      
+  
+  void move() {
+    if (AtNextStation()) {
+      setCurrAndNext(nextStat);
+    }
+    
+    xcord += xdir;
+    ycord += ydir;
+  }
 
   void display() {
-
-    
      fill(0,0,255);
      noStroke();
      rect(xcord,ycord,trWid, trLen);

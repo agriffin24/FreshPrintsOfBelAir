@@ -1,6 +1,7 @@
 
 ArrayList<Station> stations= new ArrayList<Station>();
 ArrayList<Route> routes = new ArrayList<Route>();
+ArrayList<Train> trees = new ArrayList<Train>();;
 
 void setup() {
   background(50);
@@ -12,6 +13,9 @@ void setup() {
   createStations();
 
   createRoutes();
+  trees.add(new Train(100,200));
+  trees.add(new Train(500,200));
+
 }
 
 
@@ -21,6 +25,10 @@ void draw() {
   }
   for (Route r : routes) {
     r.display();
+  }
+  
+  for (Train t : trees) {
+    t.display();
   }
 }
 

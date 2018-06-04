@@ -14,18 +14,27 @@ void setup() {
   createStations();
 
   createRoutes();
-  
+
+
   trees.add(new Train(100, 200, stations.get(0)));
-  // trees.add(new Train(500,200));
+
+
+  //sop(millis());
+  //sop(hour());
+  //sop(second());
+  //sop(day());
+  //// trees.add(new Train(500,200));
 }
 
 
 void draw() {
-  //background(50);
-  
+  background(50);
+
+ // sop(frameRate);
   for (Station w : stations) {
     w.display();
   }
+
   for (Route r : routes) {
     r.display();
   }
@@ -33,11 +42,8 @@ void draw() {
   for (Train t : trees) {
     t.move();
     t.display();
-
   }
 }
-
-
 
 void createStations() {
   stations.add(new Station(100, 200));
@@ -55,14 +61,19 @@ void createStations() {
   createDirections();
 }
 
+void sop(Object o) {
+  System.out.println(o);
+}
+
 
 //creates the distances between x and y between consecutive stations as well as what the next stations for each station is.
 void createDirections() {
   for (int i = 0; i < stations.size() - 1; i++) {
     stations.get(i).setDists(stations.get(i+1)); //sets the distances to the next stations
   }
-}
 
+  stations.get(stations.size()-1).setDistsZero();
+}
 
 void createRoutes() {
   for (int i=0; i<stations.size()-1; i++) {

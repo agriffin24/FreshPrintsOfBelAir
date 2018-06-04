@@ -10,8 +10,8 @@ class Route {
   }
   
   void display() {
-    fill(255,0,0);
-    strokeWeight(10);
+    stroke(255,255,255);
+    strokeWeight(7);
     line(x1cor,y1cor,x2cor,y2cor);
   }
 }

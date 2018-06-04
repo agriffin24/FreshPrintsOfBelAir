@@ -9,8 +9,8 @@ class Station {
   Station nextStat; //next station
   
   
-
-  final float DIAMETER = 20; //station's diameter
+  final float RADIUS = 20;
+  final float DIAMETER = 40; //station's diameter
   final color defColor = color(255, 0, 255); //default color which is magenta
 
   
@@ -39,8 +39,7 @@ class Station {
   Station getNext() {
     return nextStat;
   }
-
-
+  
 
   void display() {
     fill(defColor);

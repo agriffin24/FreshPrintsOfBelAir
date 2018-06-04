@@ -2,8 +2,7 @@
 ArrayList<Station> stations= new ArrayList<Station>();
 ArrayList<Route> routes = new ArrayList<Route>();
 ArrayList<Train> trees = new ArrayList<Train>();
-;
-
+float mode = 0;
 void setup() {
   background(50);
   size(1500, 1000);
@@ -28,8 +27,10 @@ void setup() {
 
 
 void draw() {
+  if (mode == 1){
+    stationModeDraw();
+  }
   background(50);
-
  // sop(frameRate);
   for (Station w : stations) {
     w.display();
@@ -44,7 +45,10 @@ void draw() {
     t.display();
   }
 }
-
+void stationModeDraw(){
+  background(100);
+  
+}
 void createStations() {
   stations.add(new Station(100, 200));
   stations.add(new Station(200, 200));
@@ -65,6 +69,13 @@ void sop(Object o) {
   System.out.println(o);
 }
 
+void mouseClicked(){
+   for (int i = 0; i < stations.size();i++){
+        if (sq(mouseX - (stations.get(i).xcord)) + sq(mouseY - (stations.get(i).ycord)) < sq(stations.get(i).RADIUS)){
+            mode = 1;
+        }
+   }
+}
 
 //creates the distances between x and y between consecutive stations as well as what the next stations for each station is.
 void createDirections() {

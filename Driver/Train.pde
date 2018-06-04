@@ -22,8 +22,8 @@ class Train {
   //PShape train, front, back, wheel1, wheel2, wheel3;
 
   float xcord, ycord;
-  float trWid = 42; //train width
-  float trLen = 15; //train length
+  float trWid = 21; //train width
+  float trLen = 8; //train length
   
   boolean isTimerOn;
 
@@ -81,8 +81,8 @@ class Train {
   }
 
   void setDirs() {
-    xdir = currStat.distX / 100;
-    ydir = currStat.distY / 100;
+    xdir = currStat.distX / 200;
+    ydir = currStat.distY / 200;
   }
 
 
@@ -120,15 +120,17 @@ class Train {
     }
 
     if (isTimerOn) {
-      if (millis() - timer >= 30) {
+      if (millis() - timer >= 5000) {
         isTimerOn = false;
-      } else {
-
+        
+      }
+    }
+    else {
         xcord += xdir;
         ycord += ydir;
       }
     }
-  }
+ 
 
       void display() {
         fill(0, 0, 255);

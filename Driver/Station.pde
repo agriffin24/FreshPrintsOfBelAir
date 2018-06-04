@@ -5,14 +5,16 @@ class Station {
 
   float distX; //distance in x to next station
   float distY; //distance in y to next station
+ 
+  Station nextStat; //next station
   
-  float rotVal = 0;
-
-  Station nextStat;
+  
 
   final float DIAMETER = 20; //station's diameter
   final color defColor = color(255, 0, 255); //default color which is magenta
 
+  
+  
   public Station(float xcor, float ycor) {
 
     xcord = xcor;

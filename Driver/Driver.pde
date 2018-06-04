@@ -6,7 +6,7 @@ ArrayList<Train> trees = new ArrayList<Train>();
 
 void setup() {
   background(50);
-  size(1000, 1000);
+  size(1500, 1000);
 
   textSize(40);
 

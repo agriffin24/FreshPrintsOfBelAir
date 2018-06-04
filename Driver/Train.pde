@@ -17,11 +17,15 @@ class Train {
 
   float speed; //since 
 
+  float timer; 
+
   //PShape train, front, back, wheel1, wheel2, wheel3;
 
   float xcord, ycord;
   float trWid = 42; //train width
   float trLen = 15; //train length
+  
+  boolean isTimerOn;
 
 
 
@@ -39,6 +43,8 @@ class Train {
 
 
     setDirs();
+    
+    isTimerOn = false;
 
 
 
@@ -96,6 +102,11 @@ class Train {
     rotVal = atan(ydif/xdif);
   }
 
+  void startTimer() {
+    isTimerOn = true;
+    timer = millis();
+  }
+
 
 
 
@@ -104,18 +115,26 @@ class Train {
       setCurrAndNext(nextStat);
       setDirs();
       setAngle();
+
+      startTimer();
     }
 
-    xcord += xdir;
-    ycord += ydir;
+    if (isTimerOn) {
+      if (millis() - timer >= 30) {
+        isTimerOn = false;
+      } else {
+
+        xcord += xdir;
+        ycord += ydir;
+      }
+    }
   }
 
-  void display() {
-    fill(0, 0, 255);
-    noStroke();
-    //rotate( -1 * (atan(
+      void display() {
+        fill(0, 0, 255);
+        noStroke();
+        //rotate( -1 * (atan(
 
-    rect(xcord, ycord, trWid, trLen);
-    rotate(rotVal);
-  }
-}
+        rect(xcord, ycord, trWid, trLen);
+      }
+    }

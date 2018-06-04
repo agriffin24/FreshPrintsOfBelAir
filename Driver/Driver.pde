@@ -27,71 +27,72 @@ void setup() {
 
 
 void draw() {
-  if (mode == 1){
-    stationModeDraw();
+  if (mode == 0) {
+    background(50);
+    // sop(frameRate);
+    for (Station w : stations) {
+      w.display();
+    }
+
+    for (Route r : routes) {
+      r.display();
+    }
+
+    for (Train t : trees) {
+      t.move();
+      t.display();
+    }
   }
-  background(50);
- // sop(frameRate);
-  for (Station w : stations) {
-    w.display();
+  else if (mode == 1) {
+      stationModeDraw();
+    }
   }
-
-  for (Route r : routes) {
-    r.display();
+  void stationModeDraw() {
+    background(0);
   }
+  void createStations() {
+    stations.add(new Station(100, 200));
+    stations.add(new Station(200, 200));
+    stations.add(new Station(300, 300));
+    stations.add(new Station(400, 400));
 
-  for (Train t : trees) {
-    t.move();
-    t.display();
-  }
-}
-void stationModeDraw(){
-  background(100);
-  
-}
-void createStations() {
-  stations.add(new Station(100, 200));
-  stations.add(new Station(200, 200));
-  stations.add(new Station(300, 300));
-  stations.add(new Station(400, 400));
+    stations.add(new Station(500, 400));
 
-  stations.add(new Station(500, 400));
+    stations.add(new Station(600, 500));
+    stations.add(new Station(700, 600));
+    stations.add(new Station(800, 500));
+    stations.add(new Station(900, 400));
 
-  stations.add(new Station(600, 500));
-  stations.add(new Station(700, 600));
-  stations.add(new Station(800, 500));
-  stations.add(new Station(900, 400));
-
-  createDirections();
-}
-
-void sop(Object o) {
-  System.out.println(o);
-}
-
-void mouseClicked(){
-   for (int i = 0; i < stations.size();i++){
-        if (sq(mouseX - (stations.get(i).xcord)) + sq(mouseY - (stations.get(i).ycord)) < sq(stations.get(i).RADIUS)){
-            mode = 1;
-        }
-   }
-}
-
-//creates the distances between x and y between consecutive stations as well as what the next stations for each station is.
-void createDirections() {
-  for (int i = 0; i < stations.size() - 1; i++) {
-    stations.get(i).setDists(stations.get(i+1)); //sets the distances to the next stations
+    createDirections();
   }
 
-  stations.get(stations.size()-1).setDistsZero();
-}
-
-void createRoutes() {
-  for (int i=0; i<stations.size()-1; i++) {
-    float x1 = stations.get(i).xcord;
-    float y1 = stations.get(i).ycord;
-    float x2 = stations.get(i+1).xcord;
-    float y2 = stations.get(i+1).ycord;
-    routes.add(new Route(x1, y1, x2, y2));
+  void sop(Object o) {
+    System.out.println(o);
   }
-}
+
+  void mouseClicked() {
+    for (int i = 0; i < stations.size(); i++) {
+      if (sq(mouseX - (stations.get(i).xcord)) + sq(mouseY - (stations.get(i).ycord)) < sq(stations.get(i).RADIUS)) {
+        mode = 1;
+      }
+    }
+  }
+
+  //creates the distances between x and y between consecutive stations as well as what the next stations for each station is.
+  void createDirections() {
+    for (int i = 0; i < stations.size() - 1; i++) {
+      stations.get(i).setDists(stations.get(i+1)); //sets the distances to the next stations
+    }
+
+    stations.get(stations.size()-1).setDistsZero();
+  }
+
+  void createRoutes() {
+    for (int i=0; i<stations.size()-1; i++) {
+      float x1 = stations.get(i).xcord;
+      float y1 = stations.get(i).ycord;
+      float x2 = stations.get(i+1).xcord;
+      float y2 = stations.get(i+1).ycord;
+      routes.add(new Route(x1, y1, x2, y2));
+    }
+  }

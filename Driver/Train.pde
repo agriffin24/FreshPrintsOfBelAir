@@ -14,8 +14,7 @@ class Train {
 
   float rotVal = 0;
 
-
-  float speed; //since 
+  float speed = 0.5; //since 
 
   float timer; 
 
@@ -81,13 +80,13 @@ class Train {
   }
 
   void setDirs() {
-    xdir = currStat.distX / 200;
-    ydir = currStat.distY / 200;
+    xdir = speed * currStat.distX / sqrt(sq(currStat.distX) + sqrt(sq(currStat.distY)));
+    ydir = speed * currStat.distY / sqrt(sq(currStat.distX) + sqrt(sq(currStat.distY)));
   }
 
 
   boolean AtNextStation() {
-    if (xcord == nextStat.xcord) { // only need to check for on x
+    if (nextStat.xcord - 0.05 < xcord && xcord < nextStat.xcord + 0.05) { // only need to check for on x
       return true;
     }
     return false;

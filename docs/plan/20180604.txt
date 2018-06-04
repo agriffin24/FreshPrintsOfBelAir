@@ -1,0 +1,41 @@
+2018-6-04
+
+Plan:
+
+Crucial Jobs:
+ *  Create a train that can move across, stop at a station, and move towards the end of the line
+ *	Make the stations interactive (being able to be selected)
+ * 	Develop stack mechanism for placing people on and off the train
+ * 	Develop timer for train in the station
+
+Core Components:
+
+Essential:
+
+ * Passenger counts
+ * Interactive map
+ * Interactive way of placing people on the train
+ 
+Non-essential:
+ * Top down view of train
+ * Making it look more professional and realistic
+ * More routes and stations
+ 
+
+Prerequisites:
+ * 
+
+Delegation:
+ Single:
+    * Timer for stations (Mohtasim)
+	* Placing people on and off train (Jackie)
+	* Macking stations interactive on map (Aidan)
+	
+ Group:
+    * Coordinate multiple trains in the system
+	* Establish how the program begins and ends. How a player wins and loses.
+
+Timeline:
+ By Tuesday, all of the essential components in this plan should be completed because the trains now have a consistent way of navigating across routes (as was completed over the weekend).
+ Also by Tuesday the simple win and lose mechanism should be established because it directly follows the essential components.
+ If there is a setback, Wednesday can accomodate,, especially since there is also no school Thursday.

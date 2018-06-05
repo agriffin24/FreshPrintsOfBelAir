@@ -1,4 +1,4 @@
-
+ArrayList<Passenger> passengers = new ArrayList<Passenger>();
 ArrayList<Station> stations= new ArrayList<Station>();
 ArrayList<Route> routes = new ArrayList<Route>();
 ArrayList<Train> trees = new ArrayList<Train>();
@@ -13,7 +13,6 @@ void setup() {
   createStations();
 
   createRoutes();
-
 
   trees.add(new Train(100, 200, stations.get(0)));
 
@@ -44,11 +43,28 @@ void draw() {
     }
   }
   else if (mode == 1) {
-      stationModeDraw();
-    }
+     stationModeDraw();
+     createPassengers();
+     for (Passenger p : passengers){
+       p.makePassenger();
+     }
+     if (mousePressed){
+        mode = 0; 
+     }
+   }
   }
   void stationModeDraw() {
     background(0);
+    rect(100, 200, 200, 600);
+    stroke(255,255,255);
+    strokeWeight(10);
+    line(80, 0, 80, 1000);
+    line(320, 0, 320, 1000);
+  }
+  void createPassengers(){
+    for (int i = 0; i < 10; i++){
+     passengers.add(new Passenger(400, 500 + 20 * i, 40, 50));
+    }
   }
   void createStations() {
     stations.add(new Station(100, 200));
@@ -72,7 +88,7 @@ void draw() {
 
   void mouseClicked() {
     for (int i = 0; i < stations.size(); i++) {
-      if (sq(mouseX - (stations.get(i).xcord)) + sq(mouseY - (stations.get(i).ycord)) < sq(stations.get(i).RADIUS)) {
+      if (mode == 0 && sq(mouseX - (stations.get(i).xcord)) + sq(mouseY - (stations.get(i).ycord)) < sq(stations.get(i).RADIUS)) {
         mode = 1;
       }
     }

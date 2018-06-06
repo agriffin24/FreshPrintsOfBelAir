@@ -12,6 +12,9 @@ class Station {
   final float RADIUS = 20;
   final float DIAMETER = 40; //station's diameter
   final color defColor = color(255, 0, 255); //default color which is magenta
+  final color trainHereColor = color(250,250,0);
+  
+  color currColor = defColor;
 
   
   
@@ -42,7 +45,17 @@ class Station {
   
 
   void display() {
-    fill(defColor);
+    //System.out.println(currColor);
+    fill(currColor);
     ellipse(xcord, ycord, DIAMETER, DIAMETER);
   }
+  
+  void trainHere() {
+    currColor = trainHereColor;
+  }
+  
+  void trainLeaves() {
+    currColor = defColor;
+  }
+
 }

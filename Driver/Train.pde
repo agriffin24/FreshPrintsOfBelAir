@@ -25,6 +25,8 @@ class Train {
   float trLen = 8; //train length
   
   boolean isTimerOn;
+  
+  
 
 
 
@@ -112,16 +114,16 @@ class Train {
   void move() {
     if (AtNextStation()) {
       setCurrAndNext(nextStat);
+      currStat.trainHere();
       setDirs();
       setAngle();
-
       startTimer();
     }
 
     if (isTimerOn) {
       if (millis() - timer >= 5000) {
         isTimerOn = false;
-        
+        currStat.trainLeaves();
       }
     }
     else {

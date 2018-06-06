@@ -3,18 +3,19 @@ class Passenger{
   float minor, major;
   int age;
   int rcolor, bcolor, gcolor;
+  color myColor;
   public Passenger(float x, float y, float w, float l){
     xcor = x;
     ycor = y;
     minor = w;
     major = l;
   }
+ 
   void makePassenger(){
-    ellipse(xcor, ycor, minor, major);
     rcolor = (int) (random(256));
     bcolor = (int) (random(256));
     gcolor = (int) (random(256));
-    fill(color(rcolor, bcolor, gcolor));
+    myColor = color(rcolor, bcolor, gcolor);
     if (max(rcolor, bcolor, gcolor) == rcolor){
       age = 65 + (int) (random(20));
     }
@@ -25,5 +26,14 @@ class Passenger{
       age = 25 + (int) (random(20));
     }
   }
+  
+  void display() {
+    fill(myColor);
+    strokeWeight(3);
+    stroke(255,255,255);
+    ellipse(xcor, ycor, minor, major);
+  }
+    
+    
   
 }

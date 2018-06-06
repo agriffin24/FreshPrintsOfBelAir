@@ -93,3 +93,9 @@ Aidan ::
 Mohtasim :: Made routes and train, which can now move on the routes and go to stations. Also updated plan. 
 Jackie ::
 ==============================================================
+2018-06-05
+--------------------------------------------------------------
+Aidan :: made the basis of the passenger class and added functionality of changing from map mode to station mode. (not fully developed yet though)
+Mohtasim :: 
+Jackie ::
+==============================================================

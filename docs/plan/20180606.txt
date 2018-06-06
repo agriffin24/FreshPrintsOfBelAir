@@ -1,0 +1,37 @@
+2018-06-06
+
+Plan:
+
+Crucial Jobs:
+ * Create a train that will move along the track and stop along each station
+ * Upon reaching a station, a new screen will pop up with a station with 
+passengers.
+ * Allow the user to be able to drag customers to the train cars.
+ * Keep track of the passengers as the simulation continues
+
+Core Compponents:
+Essential:
+
+ * Passenger counts
+ * User interaction
+ * Train stopping
+
+Non-essential:
+
+ * Top down view
+ * Ability to choose routes
+ * Bigger map and station
+
+Delegation:
+ Single:
+  * Timer for stations
+  * Choosing/selecting routes
+  * Making interaction with trains
+ Group:
+  * Implement all core components such as train stops, dragging passengers, 
+and sotring passengers.
+
+Timeline:
+ By Wednesday, have the user interaction ready as well as the train station
+layout operational. Have the program be able to store the number of passengers
+and change with each station.

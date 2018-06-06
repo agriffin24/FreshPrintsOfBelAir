@@ -15,6 +15,7 @@ class Station {
   final color trainHereColor = color(250,250,0);
   
   public boolean trainHere;
+  Train currTrainOnStation;
   color currColor = defColor;
 
   
@@ -52,7 +53,7 @@ class Station {
     ellipse(xcord, ycord, DIAMETER, DIAMETER);
   }
   
-  void trainHere() {
+  void setTrainHere() { //sets color to train here color
     currColor = trainHereColor;
     trainHere = true;
     

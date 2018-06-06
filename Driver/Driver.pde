@@ -41,12 +41,7 @@ void draw() {
   } else if (mode == 1) {
     stationModeDraw();
     //createPassengers();
-    for (Passenger p : passengers) {
-      p.display();
-    }
-    if (mousePressed) {
-      mode = 0;
-    }
+    
   }
   // sop(frameRate);
   for (Station w : stations) {
@@ -70,23 +65,41 @@ void draw() {
 }
 
 void createTrainInStation() {
-  fill (0, 255, 0);
-  rect(100, 125, 200, 600);
+  fill (180, 190, 200);
+  rect(100, 100, 200, 600);
 }
 void stationModeDraw() {
-  background(0);
+  background(40, 120, 220);
 
   if (stationModeStation.trainHere) {
     createTrainInStation();
   }
   stroke(white);
   strokeWeight(10);
-  line(80, 0, 80, 1000);
-  line(320, 0, 320, 1000);
+  line(80, 0, 80, 1000); //makes tracks
+  line(320, 0, 320, 1000); //makes tracks
+  
+  createBackButton();
+  
+ // displayTimer();
+  
+  for (Passenger p : passengers) {
+      p.display();
+    }
+}
+
+void createBackButton() {
+   fill(130,130,130);
+   noStroke();
+   rect(1100,70,225,35);
+   
+   fill(0);
+   textSize(30);
+   text("Return to Map", 1100,100);
 }
 void createPassengers() {
   for (int i = 0; i < 10; i++) {
-    passengers.add(new Passenger(400, 175 + 55 * i, 40, 50)); //size and spacing of passengers
+    passengers.add(new Passenger(400, 150 + 55 * i, 40, 40)); //size and spacing of passengers
   }
 }
 void createStations() {
@@ -110,17 +123,31 @@ void sop(Object o) {
 }
 
 void mouseClicked() {
-  for (int i = 0; i < stations.size(); i++) {
-    if (mode == 0 && sq(mouseX - (stations.get(i).xcord)) + sq(mouseY - (stations.get(i).ycord)) < sq(stations.get(i).RADIUS)) {
-      stationModeStation = stations.get(i);
-      //if (stationModeStation.trainHere) {
-      mode = 1;
-      //}
-      for (Passenger p : passengers) {
-        p.makePassenger();
+  if (mode == 0) {
+    for (int i = 0; i < stations.size(); i++) {
+      if (sq(mouseX - (stations.get(i).xcord)) + sq(mouseY - (stations.get(i).ycord)) < sq(stations.get(i).RADIUS)) {
+        stationModeStation = stations.get(i);
+        //if (stationModeStation.trainHere) {
+        mode = 1;
+        //}
+        for (Passenger p : passengers) {
+          p.makePassenger();
+        }
       }
     }
   }
+  else if (mode == 1) {
+    if (mouseInBackButton()) {
+      mode = 0;
+    }
+  }
+}
+
+boolean mouseInBackButton() {
+  if (mouseX > 1100 && mouseX < 1325 && mouseY > 70 && mouseY < 105) {
+    return true;
+  }
+  return false;
 }
 
 //creates the distances between x and y between consecutive stations as well as what the next stations for each station is.

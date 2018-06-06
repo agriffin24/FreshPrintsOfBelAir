@@ -113,7 +113,7 @@ class Train {
   void move() {
     if (AtNextStation()) {
       setCurrAndNext(nextStat);
-      currStat.trainHere();
+      currStat.setTrainHere();
       setDirs();
       setAngle();
       startTimer();

@@ -26,14 +26,14 @@ class Station {
     ycord = ycor;
   }
 
-  void setDists(Station star) {
+  void setDists(Station star) { //sets distances to next train
     
     nextStat = star;
     distX = star.xcord - xcord;
     distY = star.ycord - ycord;
   }
   
-  void setDistsZero() {
+  void setDistsZero() { //sets its distances to the next train to 0
     nextStat = this;
     distX = 0;
     distX = 0;

@@ -81,11 +81,19 @@ void stationModeDraw() {
   
   createBackButton();
   
- // displayTimer();
+ displayTimer();
   
   for (Passenger p : passengers) {
       p.display();
     }
+   
+}
+
+void displayTimer() {
+  textFont("Waree-Bold");
+  textSize(30);
+  text("Train Leaves in: " + stationModeStation.timer() + " se
+  
 }
 
 void createBackButton() {
@@ -123,7 +131,7 @@ void sop(Object o) {
 }
 
 void mouseClicked() {
-  if (mode == 0) {
+  if (mode == 0) { //only select on stations in map mode
     for (int i = 0; i < stations.size(); i++) {
       if (sq(mouseX - (stations.get(i).xcord)) + sq(mouseY - (stations.get(i).ycord)) < sq(stations.get(i).RADIUS)) {
         stationModeStation = stations.get(i);
@@ -136,7 +144,7 @@ void mouseClicked() {
       }
     }
   }
-  else if (mode == 1) {
+  else if (mode == 1) { //when in station mode
     if (mouseInBackButton()) {
       mode = 0;
     }

@@ -23,10 +23,10 @@ class Train {
   float xcord, ycord;
   float trWid = 21; //train width
   float trLen = 8; //train length
-  
+
   boolean isTimerOn;
-  
-  
+
+
 
 
 
@@ -44,7 +44,7 @@ class Train {
 
 
     setDirs();
-    
+
     isTimerOn = false;
 
 
@@ -108,12 +108,15 @@ class Train {
   }
 
 
-
-
+/*
+If Train arrives at the nextStation, then set it's current station to the newly arrived station, and set it's next station to the following station. The new current station changes its color to yellow
+for as long as the timer is active.
+*/
   void move() {
     if (AtNextStation()) {
       setCurrAndNext(nextStat);
       currStat.setTrainHere();
+      currStat.currTrainOnStation = this;
       setDirs();
       setAngle();
       startTimer();
@@ -124,19 +127,18 @@ class Train {
         isTimerOn = false;
         currStat.trainLeaves();
       }
+    } else {
+      xcord += xdir;
+      ycord += ydir;
     }
-    else {
-        xcord += xdir;
-        ycord += ydir;
-      }
-    }
- 
+  }
 
-      void display() {
-        fill(0, 0, 255);
-        noStroke();
-        //rotate( -1 * (atan(
 
-        rect(xcord, ycord, trWid, trLen);
-      }
-    }
+  void display() {
+    fill(0, 0, 255);
+    noStroke();
+    //rotate( -1 * (atan(
+
+    rect(xcord, ycord, trWid, trLen);
+  }
+}

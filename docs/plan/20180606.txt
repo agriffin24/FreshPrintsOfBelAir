@@ -1,3 +1,6 @@
+Team FreshPrintsOfBelAir (Aidan Griffin, Mohtasim Howlader, Jackie Li)
+APCS2 pd6
+HW59 -- Changes In Latitude, Changes In Attitude
 2018-06-06
 
 Plan:

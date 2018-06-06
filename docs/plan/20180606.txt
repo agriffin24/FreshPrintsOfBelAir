@@ -12,26 +12,27 @@ passengers.
 Core Compponents:
 Essential:
 
- * Passenger counts
- * User interaction
- * Train stopping
+ * Passenger counts - Passengers exist now but they're not counted for each station nor by the trains
+ * Stack implementation - Not completed. Passenger lines do exist though for the stack to be implemented on. 
+ * User interaction - Dragging onto station not completed yet, however program detects when a passenger is selected.
+ * Train stopping - Trains stop based on timer but this cannot be seen in the station screen.
 
 Non-essential:
 
- * Top down view
- * Ability to choose routes
- * Bigger map and station
+ * Top down view - there is a top-down view, however it does not reflect whether the train is on the station or not.
+ * Ability to choose routes - Not done.
+ * Bigger map and station - Map size increased but routes have not been expanded. 
 
 Delegation:
  Single:
-  * Timer for stations
-  * Choosing/selecting routes
-  * Making interaction with trains
+  * Have station screens and map screen sycnhronized. (Mohtasim)
+  * Implement UI mechanism for placing passengers on trains using stacks and passenger counts (Aidan)
+  * Expand routes and passenger limits for each station and train. (Jackie)
  Group:
-  * Implement all core components such as train stops, dragging passengers, 
-and sotring passengers.
+  * Establish how the game begins and ends.
+  * Make sure Trains, stations, and passengers are properly "talking" to each other.
 
 Timeline:
- By Wednesday, have the user interaction ready as well as the train station
-layout operational. Have the program be able to store the number of passengers
-and change with each station.
+ By end of Wednesday, have the user interaction ready as well as the train station
+layout operational and synchronized with the map. Have the program be able to store the number of passengers
+and change with each station. Have beginning and end for the simulation. This must be done by the end of Wednesday (NO EXCEPTIONS). Thankfully it clearly follows our most recent work. Thursday is for polishing. 

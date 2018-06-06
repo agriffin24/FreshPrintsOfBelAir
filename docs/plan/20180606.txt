@@ -8,6 +8,7 @@ Crucial Jobs:
 passengers.
  * Allow the user to be able to drag customers to the train cars.
  * Keep track of the passengers as the simulation continues
+ * A way for the simulation to end based on the goal (getting passengers to work on time).
 
 Core Compponents:
 Essential:

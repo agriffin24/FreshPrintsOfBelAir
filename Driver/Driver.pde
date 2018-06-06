@@ -4,14 +4,14 @@ ArrayList<Route> routes = new ArrayList<Route>();
 ArrayList<Train> trees = new ArrayList<Train>();
 float mode = 0; // 0 map mode, 1 = station mode
 
-color white = color(255,255,255);
+color white = color(255, 255, 255);
 
 Station stationModeStation = null;
 
 
 void setup() {
   background(50);
-  size(1500, 1000);
+  size(1360, 732);
 
   textSize(40);
 
@@ -21,7 +21,8 @@ void setup() {
   createRoutes();
 
   trees.add(new Train(100, 200, stations.get(0)));
-  
+  trees.get(0).currStat = stations.get(0);
+
   createPassengers();
 
 
@@ -37,8 +38,7 @@ void setup() {
 void draw() {
   if (mode == 0) {
     background(50);
-  }
-  else if (mode == 1) {
+  } else if (mode == 1) {
     stationModeDraw();
     //createPassengers();
     for (Passenger p : passengers) {
@@ -68,10 +68,17 @@ void draw() {
     }
   }
 }
+
+void createTrainInStation() {
+  fill (0, 255, 0);
+  rect(100, 125, 200, 600);
+}
 void stationModeDraw() {
   background(0);
-  fill (0,255,0);
-  rect(100, 200, 200, 600);
+
+  if (stationModeStation.trainHere) {
+    createTrainInStation();
+  }
   stroke(white);
   strokeWeight(10);
   line(80, 0, 80, 1000);
@@ -79,7 +86,7 @@ void stationModeDraw() {
 }
 void createPassengers() {
   for (int i = 0; i < 10; i++) {
-    passengers.add(new Passenger(400, 250 + 55 * i, 40, 50)); //size and spacing of passengers
+    passengers.add(new Passenger(400, 175 + 55 * i, 40, 50)); //size and spacing of passengers
   }
 }
 void createStations() {
@@ -105,13 +112,14 @@ void sop(Object o) {
 void mouseClicked() {
   for (int i = 0; i < stations.size(); i++) {
     if (mode == 0 && sq(mouseX - (stations.get(i).xcord)) + sq(mouseY - (stations.get(i).ycord)) < sq(stations.get(i).RADIUS)) {
-      mode = 1;
       stationModeStation = stations.get(i);
+      //if (stationModeStation.trainHere) {
+      mode = 1;
+      //}
       for (Passenger p : passengers) {
-      p.makePassenger();
-    } 
+        p.makePassenger();
+      }
     }
-    
   }
 }
 

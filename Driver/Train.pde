@@ -87,6 +87,7 @@ class Train {
   }
 
 
+
   boolean AtNextStation() {
     if (nextStat.xcord - 0.05 < xcord && xcord < nextStat.xcord + 0.05) { // only need to check for on x
       return true;
@@ -97,8 +98,6 @@ class Train {
   void setAngle() {
     float xdif = nextStat.xcord - xcord;
     float ydif = nextStat.ycord - ycord;
-
-    System.out.println(xdif + "and" + ydif);
 
     rotVal = atan(ydif/xdif);
   }

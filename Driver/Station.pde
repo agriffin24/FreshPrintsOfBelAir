@@ -14,6 +14,7 @@ class Station {
   final color defColor = color(255, 0, 255); //default color which is magenta
   final color trainHereColor = color(250,250,0);
   
+  public boolean trainHere;
   color currColor = defColor;
 
   
@@ -45,6 +46,7 @@ class Station {
   
 
   void display() {
+    //
     //System.out.println(currColor);
     fill(currColor);
     ellipse(xcord, ycord, DIAMETER, DIAMETER);
@@ -52,10 +54,13 @@ class Station {
   
   void trainHere() {
     currColor = trainHereColor;
+    trainHere = true;
+    
   }
   
   void trainLeaves() {
     currColor = defColor;
+    trainHere = false;
   }
 
 }

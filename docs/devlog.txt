@@ -32,9 +32,10 @@ Flesh out each category whenever necessary, appropriate.
 ------------------------------------------
 OBSTACLES OVERCOME
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Learning to create a custom shape:
+* Learning to create a custom shape:
 We didn't want to have just a simple built-in shape for our train, but to have a custom made train that the user and observe and admire. We then learn that processing has a built-in function that allows us to create a shape to our heart's desire, allowing us to create a custom train.
-Getting the dragging functionality of Passengers was somewhat challenging. It took us some time to realize that mousePressed() and mouseDragged() functions are not implemented unless they are in the Driver class. We realized this via SOP debugging and we managed to fix it to allow the user to drag passengers onto the train.
+
+* Getting the dragging functionality of Passengers was somewhat challenging. It took us some time to realize that mousePressed() and mouseDragged() functions are not implemented unless they are in the Driver class. We realized this via SOP debugging and we managed to fix it to allow the user to drag passengers onto the train.
 
 
 
@@ -44,8 +45,9 @@ UNRESOLVED ISSUES
 
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-We can create any shape to our liking in Processing, which is really beneficial to our project, as we want the layout to simulate what looks to be an actual train moving along the screen. 
-We also learned how to properly use a timer to count down the amount of time left before a train leaves a station and we used to ensure that a train would only stay at a station for 5 seconds before moving to the next station.  
+* We can create any shape to our liking in Processing, which is really beneficial to our project, as we want the layout to simulate what looks to be an actual train moving along the screen.
+
+* We also learned how to properly use a timer to count down the amount of time left before a train leaves a station and we used to ensure that a train would only stay at a station for 5 seconds before moving to the next station.  
 
 
 MID-DEVELOPMENT DESIGN CHANGES
@@ -81,20 +83,28 @@ Jackie :: Created a flowchart for the driver class/file that the user follows.
 
 2018-06-01
 --------------------------------------------------------------
-Aidan ::
-Mohtasim ::
-Jackie ::
+Aidan :: Created devlog, proposal, etc
+Mohtasim :: 
+Jackie :: Updated the devlog
 ==============================================================
 
 2018-06-03
 --------------------------------------------------------------
 Aidan ::
 Mohtasim :: Made routes and train, which can now move on the routes and go to stations. Also updated plan. 
-Jackie ::
+Jackie :: 
 ==============================================================
+
 2018-06-05
 --------------------------------------------------------------
 Aidan :: made the basis of the passenger class and added functionality of changing from map mode to station mode. (not fully developed yet though)
 Mohtasim :: 
-Jackie ::
+Jackie :: Created plan accordingly with what has been done so far
+==============================================================
+
+2018-06-07
+--------------------------------------------------------------
+Aidan :: Added the timer for when a train enters a station. Also created new routes for the train.
+Mohtasim :: Created a boundary for the train/passengers and allowed for the passengers to be added.
+Jackie :: Established the user's ability to click and drag passengers to a train. Also updated README.md.
 ==============================================================

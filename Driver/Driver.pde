@@ -41,7 +41,9 @@ void draw() {
   } else if (mode == 1) {
     stationModeDraw();
     //createPassengers();
-    
+  for (Passenger p : passengers) {
+    p.checkMouse();
+  }
   }
   // sop(frameRate);
   for (Station w : stations) {
@@ -83,9 +85,9 @@ void stationModeDraw() {
   
   displayTimer();
   
-  for (Passenger p : passengers) {
+  /*for (Passenger p : passengers) {
       p.display();
-    }
+    }*/
    
 }
 
@@ -107,7 +109,7 @@ void createBackButton() {
 }
 void createPassengers() {
   for (int i = 0; i < 10; i++) {
-    passengers.add(new Passenger(400, 150 + 55 * i, 40, 40)); //size and spacing of passengers
+    passengers.add(new Passenger(400, 150 + 65 * i, 40, 40)); //size and spacing of passengers
   }
 }
 void createStations() {
@@ -148,6 +150,36 @@ void mouseClicked() {
     if (mouseInBackButton()) {
       mode = 0;
     }
+  }
+}
+
+
+void mousePressed() {
+  for (Passenger p : passengers) {
+  if (p.over) {
+    p.locked = true;
+    
+  }
+  else {
+    p.locked = false;
+  }
+  p.difX = mouseX - p.xcor;
+  p.difY = mouseY - p.ycor;
+  }
+}
+
+void mouseDragged() {
+  for (Passenger p : passengers) {
+  if (p.locked) {
+    p.xcor = mouseX - p.difX;
+    p.ycor = mouseY - p.difY;
+  }
+  }
+}
+
+void mouseReleased() {
+  for (Passenger p : passengers) {
+  p.locked = false;
   }
 }
 

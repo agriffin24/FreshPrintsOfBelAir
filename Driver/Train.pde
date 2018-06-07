@@ -144,9 +144,11 @@ class Train {
 
   float rotVal = 0;
 
-  float speed = 0.2; //since 
+  float speed = 0.9; //since 
 
   float timer; 
+  
+  final float timeOnStation = 7000;
 
   //PShape train, front, back, wheel1, wheel2, wheel3;
 
@@ -155,6 +157,8 @@ class Train {
   float trLen = 8; //train length
 
   boolean isTimerOn;
+  
+  int passengerCount = 0;
 
 
 
@@ -181,7 +185,7 @@ class Train {
     isTimerOn = false;
 
 
-
+    //comment out here
     //commented out because pshapes are annoying
     //train = createShape(GROUP);
 
@@ -215,14 +219,14 @@ class Train {
   }
 
   void setDirs() {
-    xdir = speed * (currStat.distX / sqrt(sq(currStat.distX) + sq(currStat.distY)));
-    ydir = speed * (currStat.distY / sqrt(sq(currStat.distX) + sq(currStat.distY)));
+    xdir = speed * currStat.distX / sqrt(sq(currStat.distX) + sq(currStat.distY));
+    ydir = speed * currStat.distY / sqrt(sq(currStat.distX) + sq(currStat.distY));
   }
 
 
 
   boolean AtNextStation() {
-    if (nextStat.xcord - 0.05 < xcord && xcord < nextStat.xcord + 0.05) { // only need to check for on x
+    if (nextStat.xcord - 1 < xcord && xcord < nextStat.xcord + 1) { // only need to check for on x
       return true;
     }
     return false;
@@ -256,7 +260,7 @@ for as long as the timer is active.
     }
 
     if (isTimerOn) {
-      if (millis() - timer >= 5000) {
+      if (millis() - timer >= timeOnStation) {
         isTimerOn = false;
         currStat.trainLeaves();
       }
@@ -269,6 +273,8 @@ for as long as the timer is active.
   
   void addPassenger(Passenger pers) {
     trainPassengers.push(pers);
+    passengerCount +=1;
+
   }
 
 
@@ -277,6 +283,7 @@ for as long as the timer is active.
     noStroke();
     //rotate( -1 * (atan(
 
+    //shape(train, xcord, ycord, trWid, trLen);
     rect(xcord, ycord, trWid, trLen);
   }
 }

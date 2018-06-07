@@ -1,6 +1,8 @@
 # FreshPrintsOfBelAir
 
-![Alt logo] (docs/img/FreshPrince.jpg "Logo")
+![alt text][logo]
+
+[logo]: https://github.com/agriffin24/FreshPrintsOfBelAir/blob/master/img/FreshPrince.jpg
 
 ## Members: Aidan Griffin, Mohtasim Howlader, Jackie Li
 ### Final Project Proposal: Trains!

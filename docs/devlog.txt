@@ -33,30 +33,29 @@ Flesh out each category whenever necessary, appropriate.
 OBSTACLES OVERCOME
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Learning to create a custom shape:
-  We didn't want to have just a simple built-in shape for our train, but to have a custom made train that the user and observe and admire. We then learn that processing has a built-in function that allows us to create a shape to our heart's desire, allowing us to create a custom train.
+We didn't want to have just a simple built-in shape for our train, but to have a custom made train that the user and observe and admire. We then learn that processing has a built-in function that allows us to create a shape to our heart's desire, allowing us to create a custom train.
+Getting the dragging functionality of Passengers was somewhat challenging. It took us some time to realize that mousePressed() and mouseDragged() functions are not implemented unless they are in the Driver class. We realized this via SOP debugging and we managed to fix it to allow the user to drag passengers onto the train.
 
 
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-<
-blah blah pesky bug...
-maybe some of these will move into the Obs.Ovrcm section...
->
+
 
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-We can create any shape to our liking in Processing, which is really benefitial to our project, as we want the layout to simulate what looks to be an actual train moving along the screen.
+We can create any shape to our liking in Processing, which is really beneficial to our project, as we want the layout to simulate what looks to be an actual train moving along the screen. 
+We also learned how to properly use a timer to count down the amount of time left before a train leaves a station and we used to ensure that a train would only stay at a station for 5 seconds before moving to the next station.  
 
 
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-We decided to ignore/de-prioritize the passenger's entitlement to sit down. Instead we will have the user drag as many passengers into the train as possible so that we can incorporate user interaction instead of having them sit back and watch a simulation.
+We decided to ignore/de-prioritize the passenger's entitlement to sit down. Instead we will have the user drag as many passengers into the train as possible so that we can incorporate user interaction instead of having them sit back and watch a simulation. Furthermore, we decided to get rid of properties such as age and gender and prioritize getting the passengers onto the train as quickly as possible. 
 
 
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-<tales of wisdom gained...>
+
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||

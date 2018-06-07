@@ -29,9 +29,9 @@ the train reaches the end of the route.
 `ArrayList` - To store our trains, passengers, stations 
 
 ### Data Types
-`float` - Traditionally used in processing
-`boolean` - Traditional Java `true` and `false`
-`int` - Integers
+..*`float` - Traditionally used in processing
+..*`boolean` - Traditional Java `true` and `false`
+..*`int` - Integers
 
 ### Driver Class
 Once booted up, the driver class will begin to create *stations, passengers, and a route.* Every class has a `display()` method, which displays the respective class. This will then draw out a train that will move along the route, stopping at magenta circles representing stations. Whenever the viewer likes, he or she may click on a station to view it, going into station mode. When in station mode, the user can click and drag the passengers around the station, adn when the train has entered the station, they can drag them onto the train.

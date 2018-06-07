@@ -13,9 +13,14 @@ class Station {
   final color defColor = color(255, 0, 255); //default color which is magenta
   final color trainHereColor = color(250,250,0);
   
-  public boolean trainHere;
-  Train currTrainOnStation;
+  public boolean trainHere; //is train on the station
+  Train currTrainOnStation; //the train currently on the station
   color currColor = defColor;
+  
+  ArrayList<Passenger> passengers = new ArrayList<Passenger>();
+  
+  ArrayList<Passenger> passToBeRemoved = new ArrayList<Passenger>();
+
 
   
   
@@ -23,6 +28,7 @@ class Station {
 
     xcord = xcor;
     ycord = ycor;
+    trainHere = false;
   }
 
   void setDists(Station star) { //sets distances to next train
@@ -58,22 +64,34 @@ class Station {
     
   }
   
+  
+  //simulates what happens when train leaves, its current color goes back to default color, and trainhere becomes false
   void trainLeaves() {
     currColor = defColor;
     trainHere = false;
+    currTrainOnStation = null;
   }
   void startTimer() {
     timer = second();
     isTimerOn = true;
   }
+  
+  
   int timer(){
     if (!trainHere){
       startTimer();
     }
     if (isTimerOn){
-      System.out.println("timer: " + timer + "second(): " + second());
+      //System.out.println("timer: " + timer + "second(): " + second());
       return (timer - second() + 5);
     }
     return 0;
   }
+  
+  
+  void createPassengers() {
+  for (int i = 0; i < 10; i++) {
+    passengers.add(new Passenger(400, 150 + 65 * i, 40, 40)); //size and spacing of passengers
+  }
+}
 }

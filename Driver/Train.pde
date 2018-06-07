@@ -1,4 +1,4 @@
-
+//import java.util.*;
 
 
 class Train {
@@ -14,7 +14,7 @@ class Train {
 
   float rotVal = 0;
 
-  float speed = 0.5; //since 
+  float speed = 0.2; //since 
 
   float timer; 
 
@@ -26,6 +26,9 @@ class Train {
 
   boolean isTimerOn;
 
+
+
+  Stack<Passenger> trainPassengers = new Stack<Passenger>();
 
 
 
@@ -82,8 +85,8 @@ class Train {
   }
 
   void setDirs() {
-    xdir = speed * currStat.distX / sqrt(sq(currStat.distX) + sqrt(sq(currStat.distY)));
-    ydir = speed * currStat.distY / sqrt(sq(currStat.distX) + sqrt(sq(currStat.distY)));
+    xdir = speed * (currStat.distX / sqrt(sq(currStat.distX) + sq(currStat.distY)));
+    ydir = speed * (currStat.distY / sqrt(sq(currStat.distX) + sq(currStat.distY)));
   }
 
 
@@ -131,6 +134,11 @@ for as long as the timer is active.
       xcord += xdir;
       ycord += ydir;
     }
+  }
+  
+  
+  void addPassenger(Passenger pers) {
+    trainPassengers.push(pers);
   }
 
 

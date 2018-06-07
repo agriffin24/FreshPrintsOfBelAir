@@ -45,16 +45,10 @@ void draw() {
     background(50);
   } else if (mode == 1) { //Mode 1 is the "station mode"
     stationModeDraw();
-    //createPassengers();
-//<<<<<<< HEAD
-//  for (Passenger p : passengers) {
-//    p.checkMouse(); // While in station mode, continuously check if the mouse is present
-//  }
-//=======
+
     for (Passenger p : stationModeStation.passengers) {
       p.checkMouse();
     }
-//>>>>>>> 881e791972746f63525930a81f07549563d016cd
   }
   // sop(frameRate);
   for (Station w : stations) {
@@ -113,20 +107,7 @@ void displayTimer() { //timer for how long until the train leaves
   text("Train Leaves in: " + stationModeStation.timer() + " seconds. ", 600, 500);
 }
 
-//<<<<<<< HEAD
-//void createBackButton() { //back button to return to the map
-//   fill(130,130,130);
-//   noStroke();
-//   rect(800,70,220,35);
-   
-//   fill(0);
-//   textSize(30);
-//   text("Return to Map", 800,100);
-//}
-//void createPassengers() { //create passengers
-//  for (int i = 0; i < 10; i++) {
-//    passengers.add(new Passenger(400, 150 + 65 * i, 40, 40)); //size and spacing of passengers
-//=======
+
 void createBackButton() {
   fill(130, 130, 130);
   noStroke();
@@ -140,7 +121,6 @@ void createPassengersOnStations() {
 
   for (Station stat : stations) {
     stat.createPassengers();
-//>>>>>>> 881e791972746f63525930a81f07549563d016cd
   }
 }
 void createStations() { // points to be our station
@@ -176,52 +156,16 @@ void mouseClicked() { //if clicked on station, open that station
         //}
       }
     }
-//<<<<<<< HEAD
-//  }
-//  else if (mode == 1) { //when in station mode
-//    if (mouseInBackButton()) { //if click back, return to map
-//=======
+
   } else if (mode == 1) { //when in station mode
     if (mouseInBackButton()) {
-//>>>>>>> 881e791972746f63525930a81f07549563d016cd
       mode = 0;
     }
   }
 }
 
 
-//<<<<<<< HEAD
-//void mousePressed() { //if mouse pressed, have the passenger locked onto the mouse
-//  for (Passenger p : passengers) {
-//  if (p.over) {
-//    p.locked = true;
-    
-//  }
-//  else {
-//    p.locked = false;
-//  }
-//  p.difX = mouseX - p.xcor;
-//  p.difY = mouseY - p.ycor;
-//  }
-//}
 
-//void mouseDragged() { //if mouse moved around, have the locked passenger follow
-//  for (Passenger p : passengers) {
-//  if (p.locked) {
-//    p.xcor = mouseX - p.difX;
-//    p.ycor = mouseY - p.difY;
-//  }
-//  }
-//}
-
-//void mouseReleased() { //when released, let the passenger stay
-//  for (Passenger p : passengers) {
-//  p.locked = false;
-//  }
-//}
-
-//boolean mouseInBackButton() { //return whether mouse is on button
-//=======
 void mousePressed() {
 
   if (mode == 1) { //if in station mode
@@ -294,7 +238,6 @@ void mouseReleased() {
 
 
 boolean mouseInBackButton() {
-//>>>>>>> 881e791972746f63525930a81f07549563d016cd
   if (mouseX > 800 && mouseX < 1020 && mouseY > 70 && mouseY < 105) {
     return true;
   }

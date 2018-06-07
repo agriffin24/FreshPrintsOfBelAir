@@ -1,6 +1,3 @@
-
-
-
 class Train {
 
   //float backX = 0;
@@ -27,27 +24,16 @@ class Train {
   boolean isTimerOn;
 
 
-
-
-
-
-
-
   public Train(float xcor, float ycor, Station star) {
 
     xcord = xcor;
     ycord = ycor;
 
-
-
     setCurrAndNext(star);
-
 
     setDirs();
 
     isTimerOn = false;
-
-
 
     //commented out because pshapes are annoying
     //train = createShape(GROUP);
@@ -76,33 +62,31 @@ class Train {
     //train.addChild(wheel3);
   }
 
-  void setCurrAndNext(Station stuff) {
+  void setCurrAndNext(Station stuff) { //assign stop
     currStat = stuff;
     nextStat = stuff.getNext();
   }
 
-  void setDirs() {
+  void setDirs() { //set direction
     xdir = speed * currStat.distX / sqrt(sq(currStat.distX) + sqrt(sq(currStat.distY)));
     ydir = speed * currStat.distY / sqrt(sq(currStat.distX) + sqrt(sq(currStat.distY)));
   }
 
-
-
-  boolean AtNextStation() {
+  boolean AtNextStation() { //is the train here
     if (nextStat.xcord - 0.05 < xcord && xcord < nextStat.xcord + 0.05) { // only need to check for on x
       return true;
     }
     return false;
   }
 
-  void setAngle() {
+  void setAngle() { //set the angle
     float xdif = nextStat.xcord - xcord;
     float ydif = nextStat.ycord - ycord;
 
     rotVal = atan(ydif/xdif);
   }
 
-  void startTimer() {
+  void startTimer() { //start timer
     isTimerOn = true;
     timer = millis();
   }
@@ -112,14 +96,14 @@ class Train {
 If Train arrives at the nextStation, then set it's current station to the newly arrived station, and set it's next station to the following station. The new current station changes its color to yellow
 for as long as the timer is active.
 */
-  void move() {
+  void move() { //from current coordinate
     if (AtNextStation()) {
       setCurrAndNext(nextStat);
       currStat.setTrainHere();
       currStat.currTrainOnStation = this;
       setDirs();
       setAngle();
-      startTimer();
+      startTimer(); //move to coordinates of the next station
     }
 
     if (isTimerOn) {
@@ -134,7 +118,7 @@ for as long as the timer is active.
   }
 
 
-  void display() {
+  void display() { //draw the train
     fill(0, 0, 255);
     noStroke();
     //rotate( -1 * (atan(

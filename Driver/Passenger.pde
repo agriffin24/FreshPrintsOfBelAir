@@ -15,7 +15,7 @@ class Passenger{
     s = l;
   }
  
-  void makePassenger(){
+  void makePassenger(){ //asign each passenger a random color
     rcolor = (int) (random(256));
     bcolor = (int) (random(256));
     gcolor = (int) (random(256));
@@ -38,26 +38,26 @@ class Passenger{
     ellipse(xcor, ycor, s, s);
   }*/
   
-  void checkMouse() {
+  void checkMouse() { //check if mouse is present on passenger
     strokeWeight(2);
     if (mouseX > xcor-s && mouseX < xcor+s && 
       mouseY > ycor-s && mouseY < ycor+s) {
 
     over = true;
     
-    if(!locked) { 
+    if(!locked) { //when clicked/locked, change the color
       stroke(255); 
       fill(153);
     }
   } else {
     stroke(153);
-    fill(myColor);
+    fill(myColor); //else, keep your color
     over = false;
   }
   ellipse( xcor, ycor, s, s);
   }
   
-  void mousePressed() {
+  void mousePressed() { //while pressed, follow the mouse
   if (over) {
     locked = true;
     myColor = color(255,255,255);
@@ -69,14 +69,14 @@ class Passenger{
   difY = mouseY - ycor;
   }
   
-  void mouseDragged() {
+  void mouseDragged() { //when dragged, have the coordinates change with the mouse's
   if (locked) {
     xcor = mouseX - difX;
     ycor = mouseY - difY;
   }
   }
 
-  void mouseReleased() {
+  void mouseReleased() { //when release, let the passenger go
     locked = false;
   }
 }

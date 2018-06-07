@@ -11,20 +11,18 @@ Station stationModeStation = null;
 
 void setup() {
   background(50);
-  size(1024, 768);
+  size(1024, 768); //standar size
 
   textSize(40);
 
   //text("Welcome to the Train Simulation", 180, 60);
   createStations();
-
   createRoutes();
 
   trees.add(new Train(100, 200, stations.get(0)));
   trees.get(0).currStat = stations.get(0);
 
   createPassengers();
-
 
 
   //sop(millis());
@@ -34,46 +32,45 @@ void setup() {
   //// trees.add(new Train(500,200));
 }
 
-
 void draw() {
-  if (mode == 0) {
+  if (mode == 0) {  // Mode 0 is the "map mode"
     background(50);
-  } else if (mode == 1) {
+  } else if (mode == 1) { //Mode 1 is the "station mode"
     stationModeDraw();
     //createPassengers();
   for (Passenger p : passengers) {
-    p.checkMouse();
+    p.checkMouse(); // While in station mode, continuously check if the mouse is present
   }
   }
   // sop(frameRate);
   for (Station w : stations) {
     if (mode == 0) {
-      w.display();
+      w.display(); //draw the stations
     }
   }
 
   for (Route r : routes) {
     if (mode == 0) {
-      r.display();
+      r.display(); //draw the routes
     }
   }
 
   for (Train t : trees) {
     t.move();
     if (mode == 0) {
-      t.display();
+      t.display(); //draw the trains
     }
   }
 }
 
-void createTrainInStation() {
+void createTrainInStation() { //when the train is in station, draw it
   fill(180, 190, 200);
   rect(100, 100, 200, 600);
 }
 void stationModeDraw() {
   background(40, 120, 220);
 
-  if (stationModeStation.trainHere) {
+  if (stationModeStation.trainHere) { //if train here, create a train here
     createTrainInStation();
   }
   stroke(white);
@@ -91,14 +88,14 @@ void stationModeDraw() {
    
 }
 
-void displayTimer() {
+void displayTimer() { //timer for how long until the train leaves
   //textFont();
-  textSize(30);
+  textSize(30); 
   text("Train Leaves in: " + stationModeStation.timer() + " seconds. ", 600, 500);
   
 }
 
-void createBackButton() {
+void createBackButton() { //back button to return to the map
    fill(130,130,130);
    noStroke();
    rect(800,70,220,35);
@@ -107,12 +104,12 @@ void createBackButton() {
    textSize(30);
    text("Return to Map", 800,100);
 }
-void createPassengers() {
+void createPassengers() { //create passengers
   for (int i = 0; i < 10; i++) {
     passengers.add(new Passenger(400, 150 + 65 * i, 40, 40)); //size and spacing of passengers
   }
 }
-void createStations() {
+void createStations() { // points to be our station
   stations.add(new Station(100, 200));
   stations.add(new Station(200, 200));
   stations.add(new Station(300, 300));
@@ -132,7 +129,7 @@ void sop(Object o) {
   System.out.println(o);
 }
 
-void mouseClicked() {
+void mouseClicked() { //if clicked on station, open that station
   if (mode == 0) { //only select on stations in map mode
     for (int i = 0; i < stations.size(); i++) {
       if (sq(mouseX - (stations.get(i).xcord)) + sq(mouseY - (stations.get(i).ycord)) < sq(stations.get(i).RADIUS)) {
@@ -147,14 +144,14 @@ void mouseClicked() {
     }
   }
   else if (mode == 1) { //when in station mode
-    if (mouseInBackButton()) {
+    if (mouseInBackButton()) { //if click back, return to map
       mode = 0;
     }
   }
 }
 
 
-void mousePressed() {
+void mousePressed() { //if mouse pressed, have the passenger locked onto the mouse
   for (Passenger p : passengers) {
   if (p.over) {
     p.locked = true;
@@ -168,7 +165,7 @@ void mousePressed() {
   }
 }
 
-void mouseDragged() {
+void mouseDragged() { //if mouse moved around, have the locked passenger follow
   for (Passenger p : passengers) {
   if (p.locked) {
     p.xcor = mouseX - p.difX;
@@ -177,13 +174,13 @@ void mouseDragged() {
   }
 }
 
-void mouseReleased() {
+void mouseReleased() { //when released, let the passenger stay
   for (Passenger p : passengers) {
   p.locked = false;
   }
 }
 
-boolean mouseInBackButton() {
+boolean mouseInBackButton() { //return whether mouse is on button
   if (mouseX > 800 && mouseX < 1020 && mouseY > 70 && mouseY < 105) {
     return true;
   }
@@ -199,7 +196,7 @@ void createDirections() {
   stations.get(stations.size()-1).setDistsZero();
 }
 
-void createRoutes() {
+void createRoutes() { //create a line from each station to the next
   for (int i = 0; i < stations.size() - 1; i++) {
     float x1 = stations.get(i).xcord;
     float y1 = stations.get(i).ycord;

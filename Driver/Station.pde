@@ -58,21 +58,21 @@ class Station {
     
   }
   
-  void trainLeaves() {
+  void trainLeaves() { //if train leaves
     currColor = defColor;
     trainHere = false;
   }
-  void startTimer() {
+  void startTimer() { //timer
     timer = second();
-    isTimerOn = true;
+    isTimerOn = true; //create a timer
   }
   int timer(){
-    if (!trainHere){
+    if (!trainHere){ 
       startTimer();
     }
     if (isTimerOn){
       System.out.println("timer: " + timer + "second(): " + second());
-      return (timer - second() + 5);
+      return (timer - second() + 5); //return time from 5 to 0
     }
     return 0;
   }

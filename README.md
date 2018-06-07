@@ -54,35 +54,3 @@ Every passenger knows the station they are at, and keeps track of their own x an
 5. Implement this into a visual process, likely using processing.
 
 ?. Have milk and cookies.
-
-### UML Diagrams
-
- **Class Train**
-
-| Properties |   Methods   |
-| ---------- | ----------: |
-|   Cars     |	 train()   |
-| Passengers |	getRoute() |
-|   Color    | newRoute()  |
-|   Seats    |   start()   |
-|   Route    |	setColor() |
-|   Doors    |	 delay()   |
-|   Times    |	  dock()   |
-|   Seats    |    open()   |
-|nextStations|     add()   |
-|prevStations|	 depart()  |
-|    Cost    |	 revert()  |
-
- **Passenger**
-
-|   Properties  |     Methods    |
-| ------------- | -------------: |
-|  Age		|  isStanding()  |
-|  Gender	|   isSitting()  |
-|  isPregnant	|     onTrain()  |
-|  isDisabled	|  onPlatform()  |
-|  Entitlement	| entitlement()  |
-|  Patience	|       board()	 |
-|  boilingPoint	|        exit()  |
-
-

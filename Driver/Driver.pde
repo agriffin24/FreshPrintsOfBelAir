@@ -11,7 +11,7 @@ Station stationModeStation = null;
 
 void setup() {
   background(50);
-  size(1360, 732);
+  size(1024, 768);
 
   textSize(40);
 
@@ -65,7 +65,7 @@ void draw() {
 }
 
 void createTrainInStation() {
-  fill (180, 190, 200);
+  fill(180, 190, 200);
   rect(100, 100, 200, 600);
 }
 void stationModeDraw() {
@@ -81,7 +81,7 @@ void stationModeDraw() {
   
   createBackButton();
   
- displayTimer();
+  displayTimer();
   
   for (Passenger p : passengers) {
       p.display();
@@ -90,20 +90,20 @@ void stationModeDraw() {
 }
 
 void displayTimer() {
-  textFont("Waree-Bold");
+  //textFont();
   textSize(30);
-  text("Train Leaves in: " + stationModeStation.timer() + " se
+  text("Train Leaves in: " + stationModeStation.timer() + " seconds. ", 600, 500);
   
 }
 
 void createBackButton() {
    fill(130,130,130);
    noStroke();
-   rect(1100,70,225,35);
+   rect(800,70,220,35);
    
    fill(0);
    textSize(30);
-   text("Return to Map", 1100,100);
+   text("Return to Map", 800,100);
 }
 void createPassengers() {
   for (int i = 0; i < 10; i++) {
@@ -152,7 +152,7 @@ void mouseClicked() {
 }
 
 boolean mouseInBackButton() {
-  if (mouseX > 1100 && mouseX < 1325 && mouseY > 70 && mouseY < 105) {
+  if (mouseX > 800 && mouseX < 1020 && mouseY > 70 && mouseY < 105) {
     return true;
   }
   return false;
@@ -168,7 +168,7 @@ void createDirections() {
 }
 
 void createRoutes() {
-  for (int i=0; i<stations.size()-1; i++) {
+  for (int i = 0; i < stations.size() - 1; i++) {
     float x1 = stations.get(i).xcord;
     float y1 = stations.get(i).ycord;
     float x2 = stations.get(i+1).xcord;

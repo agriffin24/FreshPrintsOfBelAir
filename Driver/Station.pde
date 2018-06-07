@@ -5,10 +5,9 @@ class Station {
 
   float distX; //distance in x to next station
   float distY; //distance in y to next station
- 
+  int timer;
+  boolean isTimerOn = false;
   Station nextStat; //next station
-  
-  
   final float RADIUS = 20;
   final float DIAMETER = 40; //station's diameter
   final color defColor = color(255, 0, 255); //default color which is magenta
@@ -63,5 +62,18 @@ class Station {
     currColor = defColor;
     trainHere = false;
   }
-
+  void startTimer() {
+    timer = second();
+    isTimerOn = true;
+  }
+  int timer(){
+    if (!trainHere){
+      startTimer();
+    }
+    if (isTimerOn){
+      System.out.println("timer: " + timer + "second(): " + second());
+      return (timer - second() + 5);
+    }
+    return 0;
+  }
 }

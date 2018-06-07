@@ -20,10 +20,7 @@ class Station {
   
   ArrayList<Passenger> passengers = new ArrayList<Passenger>();
   
-  ArrayList<Passenger> passToBeRemoved = new ArrayList<Passenger>();
-
-
-  
+  ArrayList<Passenger> passToBeRemoved = new ArrayList<Passenger>();  
   
   public Station(float xcor, float ycor) {
 
@@ -53,7 +50,6 @@ class Station {
   
 
   void display() {
-    //
     //System.out.println(currColor);
     fill(currColor);
     ellipse(xcord, ycord, DIAMETER, DIAMETER);

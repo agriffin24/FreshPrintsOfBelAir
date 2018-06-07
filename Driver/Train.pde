@@ -1,7 +1,4 @@
-
-
 import java.util.*;
-
 
 class Train {
 
@@ -31,31 +28,19 @@ class Train {
   boolean isTimerOn;
   
   int passengerCount = 0;
-
-
-
+  
   Stack<Passenger> trainPassengers = new Stack<Passenger>();
-
-
-
-
-
-
 
   public Train(float xcor, float ycor, Station star) {
 
     xcord = xcor;
     ycord = ycor;
 
-
-
     setCurrAndNext(star);
-
 
     setDirs();
 
     isTimerOn = false;
-
 
     //comment out here
     //commented out because pshapes are annoying
@@ -85,17 +70,15 @@ class Train {
     //train.addChild(wheel3);
   }
 
-  void setCurrAndNext(Station stuff) {
+  void setCurrAndNext(Station stuff) { //set its next destination 
     currStat = stuff;
     nextStat = stuff.getNext();
   }
 
-  void setDirs() {
+  void setDirs() { //set its directions towards next station
     xdir = speed * currStat.distX / sqrt(sq(currStat.distX) + sq(currStat.distY));
     ydir = speed * currStat.distY / sqrt(sq(currStat.distX) + sq(currStat.distY));
   }
-
-
 
   boolean AtNextStation() {
     if (nextStat.xcord - 1 < xcord && xcord < nextStat.xcord + 1) { // only need to check for on x
@@ -116,7 +99,7 @@ class Train {
     timer = millis();
   }
 
-void removePassengers() {
+void removePassengers() {  //pop off from a stack of passengers and lower the count
   int randNum = (int) random(0,passengerCount/2);
   
   for (int i = 0; i <randNum; i++) {
@@ -129,7 +112,7 @@ void removePassengers() {
 If Train arrives at the nextStation, then set it's current station to the newly arrived station, and set it's next station to the following station. The new current station changes its color to yellow
 for as long as the timer is active.
 */
-  void move() {
+  void move() { //move towards coordinates of next station
     if (AtNextStation()) {
       setCurrAndNext(nextStat);
       currStat.setTrainHere();
@@ -151,13 +134,10 @@ for as long as the timer is active.
     }
   }
   
-  
-  void addPassenger(Passenger pers) {
+  void addPassenger(Passenger pers) { //push a new passenger to the stack
     trainPassengers.push(pers);
     passengerCount +=1;
-
   }
-
 
   void display() {
     fill(0, 0, 255);
@@ -168,4 +148,3 @@ for as long as the timer is active.
     rect(xcord, ycord, trWid, trLen);
   }
 }
-//>>>>>>> 881e791972746f63525930a81f07549563d016cd

@@ -10,15 +10,14 @@ class Passenger {
   color myColor;
   float PASSRADIUS = 20;
   
-  Station myStation;
-  
+  Station myStation;  
   
   public Passenger(float x, float y, float w, float l) {
     xcor = x;
     ycor = y;
     s = w;
     s = l;
-
+    //assigns each passenger to a random color
     rcolor = (int) (random(256));
     bcolor = (int) (random(256));
     gcolor = (int) (random(256));
@@ -40,29 +39,25 @@ class Passenger {
    ellipse(xcor, ycor, s, s);
    }*/
 
-
-
   color white = color(255);
   void checkMouse() { //checks if mouse on passenger and 
 
     strokeWeight(2);
 
-
     if (sq(mouseX - xcor) + sq(mouseY - ycor) < sq(PASSRADIUS)) { //if mouse in the area of the circle
 
       over = true;
 
-      if (!locked) { 
+      if (!locked) { //if hovering, then change outline to white 
         stroke(white); 
         fill(153); //grayy
       }
     } else {
-      stroke(153);
+      stroke(153); //else, leave it
       fill(myColor);
       over = false;
     }
     ellipse( xcor, ycor, s, s);
   }
 
-//>>>>>>> 881e791972746f63525930a81f07549563d016cd
 }

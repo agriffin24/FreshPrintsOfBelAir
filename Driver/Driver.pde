@@ -17,7 +17,7 @@ void setup() {
   background(50);
   size(1024, 768); //standar size
 
-  font = loadFont("Dialog.vlw");
+  //font = loadFont("Dialog.vlw");
 
   textSize(40);
 
@@ -26,12 +26,11 @@ void setup() {
   createRoutes();
 
 
-  Station firstStation = stations.get(0);
+  Station firstStation = stations.get(0); //first station
   trees.add(new Train(firstStation.xcord, firstStation.ycord, firstStation));
   trees.get(0).currStat = stations.get(0);
 
-  createPassengersOnStations();
-
+  createPassengersOnStations(); //every station has passengers
 
   //sop(millis());
   //sop(hour());
@@ -47,7 +46,7 @@ void draw() {
     stationModeDraw();
 
     for (Passenger p : stationModeStation.passengers) {
-      p.checkMouse();
+      p.checkMouse(); //continuously check for mouse
     }
   }
   // sop(frameRate);
@@ -64,7 +63,7 @@ void draw() {
   }
 
   for (Train t : trees) {
-    t.move();
+    t.move(); //have the trains continuously move
     if (mode == 0) {
       t.display(); //draw the trains
     }
@@ -78,7 +77,7 @@ void createTrainInStation() { //when the train is in station, draw it
   textSize(20);
   // textFont(font)
 
-  fill(0);
+  fill(0); //v---display passenger count---v
   text("Passenger Count: " + stationModeStation.currTrainOnStation.passengerCount, 95, 400);
 }
 void stationModeDraw() {
@@ -103,22 +102,21 @@ void stationModeDraw() {
 
 void displayTimer() { //timer for how long until the train leaves
   //textFont();
-  textSize(30); 
+  textSize(30);  // v--- Counter for Train time ---v
   text("Train Leaves in: " + stationModeStation.timer() + " seconds. ", 600, 500);
 }
 
-
-void createBackButton() {
+void createBackButton() { //create a return button
   fill(130, 130, 130);
   noStroke();
   rect(800, 70, 220, 35);
 
   fill(0);
   textSize(30);
-  text("Return to Map", 800, 100);
+  text("Return to Map", 800, 100); //text to be displayed
 }
 void createPassengersOnStations() {
-
+  //every station has set amount of passengers
   for (Station stat : stations) {
     stat.createPassengers();
   }
@@ -165,9 +163,7 @@ void mouseClicked() { //if clicked on station, open that station
 }
 
 
-
 void mousePressed() {
-
   if (mode == 1) { //if in station mode
     for (Passenger p : stationModeStation.passengers) {
       if (p.over) {
@@ -175,7 +171,7 @@ void mousePressed() {
       } else {
         p.locked = false;
       }
-      p.difX = mouseX - p.xcor;
+      p.difX = mouseX - p.xcor; //set the locked passengers distance to the mouse
       p.difY = mouseY - p.ycor;
     }
   }
@@ -187,7 +183,6 @@ void mouseDragged() {
       if (p.locked) { //locked means dragging passenger
 
         if (stationModeStation.trainHere) { //if train on station 
-
 
           p.xcor = mouseX;
           p.ycor = mouseY;
@@ -209,28 +204,27 @@ void mouseDragged() {
 }
 
 
-boolean mouseInStation() {
+boolean mouseInStation() { //if mouse in station
   return (mouseX > 90 && mouseX < 320 && mouseY > 100 && mouseY < 700);
 }
 
-boolean onTrain(Passenger pass) {
-
+boolean onTrain(Passenger pass) { //if passenger on train
   return (pass.xcor > 90 && pass.xcor < 320 && pass.ycor > 100 && pass.ycor < 700);
 }
 
-void mouseReleased() {
+void mouseReleased() { //when released, 
   if (mode == 1) {
     for (Passenger p : stationModeStation.passengers) {
       p.locked = false;
 
-      if (onTrain(p)) {
+      if (onTrain(p)) { //if the passenger is on train, then add to removed
         stationModeStation.currTrainOnStation.addPassenger(p);
         stationModeStation.passToBeRemoved.add(p); //add the ones on the train to be removed
       }
     }
 
     for (Passenger rem : stationModeStation.passToBeRemoved) {
-      stationModeStation.passengers.remove(rem);
+      stationModeStation.passengers.remove(rem); //remove the passenger from station
     }
   }
 }

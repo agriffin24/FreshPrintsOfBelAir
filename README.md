@@ -1,5 +1,6 @@
 # FreshPrintsOfBelAir
-Final Project Repo
+
+![Alt text][logo] (img/FreshPrince.jpg "Logo")
 
 ## Members: Aidan Griffin, Mohtasim Howlader, Jackie Li
 ### Final Project Proposal: Trains!

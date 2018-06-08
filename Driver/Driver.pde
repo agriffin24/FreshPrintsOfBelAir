@@ -29,16 +29,16 @@ void setup() {
 
   //text("Welcome to the Train Simulation", 180, 60);
   createStations();
+  createDirections();
+
   createRoutes();
   for (int j = 1; j < stations.size() - 1; j++){
      numbers.add(j);
   }
   
-  
-  
+  //create trains
   Station firstStation = stations.get(0); //always train on first station
   trains.add(new Train(firstStation.xcord,firstStation.ycord, firstStation));
-  
 
   for (int i = 1; i < 3 ; i++) {
     int randTrains = (int) random(0, numbers.size());
@@ -51,7 +51,13 @@ void setup() {
     
   }
   
-  createLastRoute();
+  //end create trains
+  
+  
+  createLastRoute(); //this add the death station to the stations
+  
+  //stations.get(stations.size() - 2).nextStat = stations.get
+  stations.get(stations.size()-1).setDistsZero();
 
   createPassengersOnStations(); //every station has passengers
 
@@ -73,6 +79,8 @@ void createLastRoute() {
   
   
   routes.add(new Route(x1,y1,x2,y2));
+  
+  stations.get(stations.size() -1).nextStat = deathStation; //sets the old last station's next staton to the death station
   
   stations.add(deathStation);
   deathStation.isLastStation = true;
@@ -200,8 +208,6 @@ void createStations() { // points to be our station
   stations.add(new Station(900, 350));
 
   //stations.get(stations.size() - 1).isLastStation = true;
-
-  createDirections();
 }
 
 void sop(Object o) {
@@ -327,7 +333,7 @@ void createDirections() {
     stations.get(i).setDists(stations.get(i+1)); //sets the distances to the next stations
   }
 
-  stations.get(stations.size()-1).setDistsZero();
+  //stations.get(stations.size()-1).setDistsZero();
 }
 
 void createRoutes() { //create a line from each station to the next

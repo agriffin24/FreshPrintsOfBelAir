@@ -1,4 +1,3 @@
-
 class Station {
 
   float xcord; //station's x-coordinate
@@ -97,10 +96,9 @@ class Station {
 
   }
 
-
   void createPassengers() {
-  for (int i = 0; i < 10; i++) {
-    passengers.add(new Passenger(400, 150 + 65 * i, 40, 40)); //size and spacing of passengers
+    for (int i = 0; i < 10; i++) {
+      passengers.add(new Passenger(400, 150 + 65 * i, 40, 40)); //size and spacing of passengers
+     }
   }
-}
 }

@@ -14,7 +14,7 @@ float mode = 0; // 0 map mode, 1 = station mode
 PFont font;
 color white = color(255, 255, 255);
 
-int passengersDead = 0;
+
 
 Station stationModeStation = null;
 
@@ -115,7 +115,6 @@ void draw() {
       t.display(); //draw the trains
       textSize(20);
       fill(255);
-      text("Number of Passengers Dead: " + passengersDead, 20, 100);
     }
   }
 
@@ -127,17 +126,7 @@ void draw() {
     }
   }
 }
-void ifLastStop(){
-  Station x = stations.get(stations.size() - 1);
-  if (x.trainHere){
-    System.out.println("lol");
-    for (Train t: trains){
-      if (t.currStat == x){
-         passengersDead += t.passengerCount;
-       } 
-    }
-  }
-}
+
 void createTrainInStation() { //when the train is in station, draw it
   fill(180, 190, 200);
   rect(90, 100, 220, 600);
@@ -292,14 +281,6 @@ boolean onTrain(Passenger pass) {
   return false;
 }
 
-
-boolean toBeKilled(Passenger pass) {
-  return (pass.xcor > 90 && pass.xcor < 320 && pass.ycor < 100 && pass.ycor > 700);
-}
-
-
-
-
 void mouseReleased() { //when released,
   if (mode == 1) {
     for (Passenger p : stationModeStation.passengers) {
@@ -308,10 +289,6 @@ void mouseReleased() { //when released,
       if (onTrain(p)) { //if the passenger is on train, then add to removed
         stationModeStation.currTrainOnStation.addPassenger(p);
         stationModeStation.passToBeRemoved.add(p); //add the ones on the train to be removed
-      }
-      if (toBeKilled(p)) {
-        stationModeStation.passToBeRemoved.add(p); //add the ones on the train to be removed
-        passengersDead +=1;
       }
     }
 

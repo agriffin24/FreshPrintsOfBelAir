@@ -1,7 +1,4 @@
-
-
 import java.util.*;
-
 
 class Train {
 
@@ -31,6 +28,7 @@ class Train {
   boolean isTimerOn;
 
   int passengerCount = 0;
+<<<<<<< HEAD
 
   boolean reachedLastStation;
 
@@ -38,31 +36,29 @@ class Train {
 
 
 
+=======
+  
+>>>>>>> 3f1d88708737e49c46d8e8e44202a4f7a28fc5a2
   Stack<Passenger> trainPassengers = new Stack<Passenger>();
-
-
-
-
-
-
 
   public Train(float xcor, float ycor, Station star) {
 
     xcord = xcor;
     ycord = ycor;
 
+<<<<<<< HEAD
     reachedLastStation = false;
     passengersOff = 0;
 
 
 
+=======
+>>>>>>> 3f1d88708737e49c46d8e8e44202a4f7a28fc5a2
     setCurrAndNext(star);
-
 
     setDirs();
 
     isTimerOn = false;
-
 
     //comment out here
     //commented out because pshapes are annoying
@@ -92,16 +88,17 @@ class Train {
     //train.addChild(wheel3);
   }
 
-  void setCurrAndNext(Station stuff) {
+  void setCurrAndNext(Station stuff) { //set its next destination 
     currStat = stuff;
     nextStat = stuff.getNext();
   }
 
-  void setDirs() {
+  void setDirs() { //set its directions towards next station
     xdir = speed * currStat.distX / sqrt(sq(currStat.distX) + sq(currStat.distY));
     ydir = speed * currStat.distY / sqrt(sq(currStat.distX) + sq(currStat.distY));
   }
 
+<<<<<<< HEAD
 
 
   boolean AtNextStation() { 
@@ -109,6 +106,10 @@ class Train {
     if (nextStat.xcord - 1 < xcord && xcord < nextStat.xcord + 1 && nextStat.ycord - 1 < ycord && ycord < nextStat.ycord + 1) { // only need to check for on x
           System.out.println("attt next station");
 
+=======
+  boolean AtNextStation() {
+    if (nextStat.xcord - 1 < xcord && xcord < nextStat.xcord + 1) { // only need to check for on x
+>>>>>>> 3f1d88708737e49c46d8e8e44202a4f7a28fc5a2
       return true;
     }
     return false;
@@ -129,6 +130,7 @@ class Train {
     currStat.startTime = millis();
   }
 
+<<<<<<< HEAD
   void removePassengers() {
     int randNum = (int) random(0, passengerCount/2);
 
@@ -138,13 +140,36 @@ class Train {
     }
 
     passengersOff = randNum;
+=======
+void removePassengers() {  //pop off from a stack of passengers and lower the count
+  int randNum = (int) random(0,passengerCount/2);
+  
+  for (int i = 0; i <randNum; i++) {
+    trainPassengers.pop();
+    passengerCount -= 1;
+>>>>>>> 3f1d88708737e49c46d8e8e44202a4f7a28fc5a2
   }
 
   /*
 If Train arrives at the nextStation, then set it's current station to the newly arrived station, and set it's next station to the following station. The new current station changes its color to yellow
+<<<<<<< HEAD
    for as long as the timer is active.
    */
   void move() {
+=======
+for as long as the timer is active.
+*/
+  void move() { //move towards coordinates of next station
+    if (AtNextStation()) {
+      setCurrAndNext(nextStat);
+      currStat.setTrainHere();
+      currStat.currTrainOnStation = this;
+      setDirs();
+      setAngle();
+      startTimer();
+      removePassengers();
+    }
+>>>>>>> 3f1d88708737e49c46d8e8e44202a4f7a28fc5a2
 
     if (reachedLastStation == false) {
       if (AtNextStation()) {  //runs only once
@@ -180,6 +205,7 @@ If Train arrives at the nextStation, then set it's current station to the newly 
       removeAllPassengers();
     }
   }
+<<<<<<< HEAD
 
   void removeAllPassengers() {
     for (int i = 0; i < passengerCount; i++) {
@@ -189,10 +215,13 @@ If Train arrives at the nextStation, then set it's current station to the newly 
   }
 
   void addPassenger(Passenger pers) {
+=======
+  
+  void addPassenger(Passenger pers) { //push a new passenger to the stack
+>>>>>>> 3f1d88708737e49c46d8e8e44202a4f7a28fc5a2
     trainPassengers.push(pers);
     passengerCount +=1;
   }
-
 
   void display() {
     fill(0, 0, 255);
@@ -203,4 +232,3 @@ If Train arrives at the nextStation, then set it's current station to the newly 
     rect(xcord, ycord, trWid, trLen);
   }
 }
-//>>>>>>> 881e791972746f63525930a81f07549563d016cd

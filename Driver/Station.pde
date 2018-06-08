@@ -24,12 +24,16 @@ class Station {
   
   ArrayList<Passenger> passengers = new ArrayList<Passenger>();
   
+<<<<<<< HEAD
   ArrayList<Passenger> passToBeRemoved = new ArrayList<Passenger>();
 
   boolean isLastStation = false;
 
 
   
+=======
+  ArrayList<Passenger> passToBeRemoved = new ArrayList<Passenger>();  
+>>>>>>> 3f1d88708737e49c46d8e8e44202a4f7a28fc5a2
   
   public Station(float xcor, float ycor) {
 
@@ -59,7 +63,6 @@ class Station {
   
 
   void display() {
-    //
     //System.out.println(currColor);
     fill(currColor);
     ellipse(xcord, ycord, DIAMETER, DIAMETER);

@@ -100,7 +100,7 @@ void stationModeDraw() {
   createBackButton();
 
   displayTimer();
-  
+
 
   /*for (Passenger p : passengers) {
    p.display();
@@ -109,8 +109,7 @@ void stationModeDraw() {
 
 void displayTimer() { //timer for how long until the train leaves
   //textFont();
-<<<<<<< HEAD
-  textSize(30); 
+  textSize(30);
 
   if (stationModeStation.isTimerOn) {
     text("Train Leaves in: " + (stationModeStation.timer() / 1000 + 1) + " seconds. ", 600, 500);
@@ -118,11 +117,7 @@ void displayTimer() { //timer for how long until the train leaves
   else {
     text("Waiting for Train to Arrive...", 600,500);
   }
-  
-=======
-  textSize(30);  // v--- Counter for Train time ---v
-  text("Train Leaves in: " + stationModeStation.timer() + " seconds. ", 600, 500);
->>>>>>> 3f1d88708737e49c46d8e8e44202a4f7a28fc5a2
+
 }
 
 void createBackButton() { //create a return button
@@ -199,11 +194,11 @@ void mousePressed() {
 }
 
 void mouseDragged() {
-  if (mode == 1) { 
+  if (mode == 1) {
     for (Passenger p : stationModeStation.passengers) {
       if (p.locked) { //locked means dragging passenger
 
-        if (stationModeStation.trainHere) { //if train on station 
+        if (stationModeStation.trainHere) { //if train on station
 
           p.xcor = mouseX;
           p.ycor = mouseY;
@@ -229,20 +224,15 @@ boolean mouseInStation() { //if mouse in station
   return (mouseX > 90 && mouseX < 320 && mouseY > 100 && mouseY < 700);
 }
 
-<<<<<<< HEAD
 boolean onTrain(Passenger pass) {
 
   if (stationModeStation.trainHere) {
     return (pass.xcor > 90 && pass.xcor < 320 && pass.ycor > 100 && pass.ycor < 700);
   }
   return false;
-=======
-boolean onTrain(Passenger pass) { //if passenger on train
-  return (pass.xcor > 90 && pass.xcor < 320 && pass.ycor > 100 && pass.ycor < 700);
->>>>>>> 3f1d88708737e49c46d8e8e44202a4f7a28fc5a2
 }
 
-void mouseReleased() { //when released, 
+void mouseReleased() { //when released,
   if (mode == 1) {
     for (Passenger p : stationModeStation.passengers) {
       p.locked = false;

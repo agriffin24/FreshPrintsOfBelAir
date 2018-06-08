@@ -1,8 +1,12 @@
 import java.util.*;
 
 
+
 ArrayList<Passenger> passengers = new ArrayList<Passenger>();
 ArrayList<Station> stations= new ArrayList<Station>();
+
+
+
 ArrayList<Route> routes = new ArrayList<Route>();
 ArrayList<Train> trees = new ArrayList<Train>();
 float mode = 0; // 0 map mode, 1 = station mode
@@ -80,6 +84,8 @@ void createTrainInStation() { //when the train is in station, draw it
 
   fill(0);
   text("Passenger Count: " + stationModeStation.currTrainOnStation.passengerCount, 95, 400);
+
+  text("Number of Passengers Getting Off: " + stationModeStation.currTrainOnStation.passengersOff, 500, 650);
 }
 void stationModeDraw() {
   background(40, 120, 220);
@@ -95,6 +101,7 @@ void stationModeDraw() {
   createBackButton();
 
   displayTimer();
+  
 
   /*for (Passenger p : passengers) {
    p.display();
@@ -104,7 +111,14 @@ void stationModeDraw() {
 void displayTimer() { //timer for how long until the train leaves
   //textFont();
   textSize(30); 
-  text("Train Leaves in: " + stationModeStation.timer() + " seconds. ", 600, 500);
+
+  if (stationModeStation.isTimerOn) {
+    text("Train Leaves in: " + (stationModeStation.timer() / 1000 + 1) + " seconds. ", 600, 500);
+  }
+  else {
+    text("Waiting for Train to Arrive...", 600,500);
+  }
+  
 }
 
 
@@ -124,17 +138,20 @@ void createPassengersOnStations() {
   }
 }
 void createStations() { // points to be our station
-  stations.add(new Station(100, 200));
-  stations.add(new Station(200, 200));
-  stations.add(new Station(300, 300));
+  stations.add(new Station(50, 200));
+  stations.add(new Station(150, 200));
+  stations.add(new Station(200, 300));
   stations.add(new Station(400, 400));
 
   stations.add(new Station(500, 400));
 
   stations.add(new Station(600, 500));
+  stations.add(new Station(600, 600));
   stations.add(new Station(700, 600));
   stations.add(new Station(800, 500));
   stations.add(new Station(900, 400));
+
+  stations.get(stations.size() - 1).isLastStation = true;
 
   createDirections();
 }
@@ -156,7 +173,6 @@ void mouseClicked() { //if clicked on station, open that station
         //}
       }
     }
-
   } else if (mode == 1) { //when in station mode
     if (mouseInBackButton()) {
       mode = 0;
@@ -215,7 +231,10 @@ boolean mouseInStation() {
 
 boolean onTrain(Passenger pass) {
 
-  return (pass.xcor > 90 && pass.xcor < 320 && pass.ycor > 100 && pass.ycor < 700);
+  if (stationModeStation.trainHere) {
+    return (pass.xcor > 90 && pass.xcor < 320 && pass.ycor > 100 && pass.ycor < 700);
+  }
+  return false;
 }
 
 void mouseReleased() {

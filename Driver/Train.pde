@@ -16,10 +16,10 @@ class Train {
 
   float rotVal = 0;
 
-  float speed = 0.5; //since 
+  float speed = 0.3; //since 
 
   float timer; 
-  
+
   final float timeOnStation = 7000;
 
   //PShape train, front, back, wheel1, wheel2, wheel3;
@@ -29,8 +29,12 @@ class Train {
   float trLen = 8; //train length
 
   boolean isTimerOn;
-  
+
   int passengerCount = 0;
+
+  boolean reachedLastStation;
+
+  int passengersOff;
 
 
 
@@ -46,6 +50,9 @@ class Train {
 
     xcord = xcor;
     ycord = ycor;
+
+    reachedLastStation = false;
+    passengersOff = 0;
 
 
 
@@ -97,8 +104,11 @@ class Train {
 
 
 
-  boolean AtNextStation() {
-    if (nextStat.xcord - 1 < xcord && xcord < nextStat.xcord + 1) { // only need to check for on x
+  boolean AtNextStation() { 
+    
+    if (nextStat.xcord - 1 < xcord && xcord < nextStat.xcord + 1 && nextStat.ycord - 1 < ycord && ycord < nextStat.ycord + 1) { // only need to check for on x
+          System.out.println("attt next station");
+
       return true;
     }
     return false;
@@ -114,48 +124,73 @@ class Train {
   void startTimer() {
     isTimerOn = true;
     timer = millis();
+
+    currStat.isTimerOn = true;
+    currStat.startTime = millis();
   }
 
-void removePassengers() {
-  int randNum = (int) random(0,passengerCount/2);
-  
-  for (int i = 0; i <randNum; i++) {
-    trainPassengers.pop();
-    passengerCount -= 1;
-  }
-}
+  void removePassengers() {
+    int randNum = (int) random(0, passengerCount/2);
 
-/*
+    for (int i = 0; i <randNum; i++) {
+      trainPassengers.pop();
+      passengerCount -= 1;
+    }
+
+    passengersOff = randNum;
+  }
+
+  /*
 If Train arrives at the nextStation, then set it's current station to the newly arrived station, and set it's next station to the following station. The new current station changes its color to yellow
-for as long as the timer is active.
-*/
+   for as long as the timer is active.
+   */
   void move() {
-    if (AtNextStation()) {
-      setCurrAndNext(nextStat);
-      currStat.setTrainHere();
-      currStat.currTrainOnStation = this;
-      setDirs();
-      setAngle();
-      startTimer();
-      removePassengers();
-    }
 
-    if (isTimerOn) {
-      if (millis() - timer >= timeOnStation) {
-        isTimerOn = false;
-        currStat.trainLeaves();
+    if (reachedLastStation == false) {
+      if (AtNextStation()) {  //runs only once
+
+        setCurrAndNext(nextStat);
+        currStat.setTrainHere();
+        currStat.currTrainOnStation = this;
+
+        if (currStat.isLastStation) {
+          reachedLastStation = true;
+        } else {
+          setDirs();
+          setAngle();
+          startTimer();
+          removePassengers();
+        }
       }
-    } else {
-      xcord += xdir;
-      ycord += ydir;
+
+      if (isTimerOn) {
+        System.out.println("timer: " + timer + "millis: " + millis());
+
+        if (millis() - timer >= timeOnStation) {
+          isTimerOn = false;
+
+          currStat.trainLeaves();
+        }
+      } else {
+        xcord += xdir;
+        ycord += ydir;
+      }
+    }
+    else {
+      removeAllPassengers();
     }
   }
-  
-  
+
+  void removeAllPassengers() {
+    for (int i = 0; i < passengerCount; i++) {
+      trainPassengers.pop();
+    }
+    passengerCount = 0;
+  }
+
   void addPassenger(Passenger pers) {
     trainPassengers.push(pers);
     passengerCount +=1;
-
   }
 
 

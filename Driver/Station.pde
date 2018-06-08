@@ -7,12 +7,16 @@ class Station {
   float distX; //distance in x to next station
   float distY; //distance in y to next station
   int timer;
+  int startTime;
+  
+  int delayTime = 7000;
   boolean isTimerOn = false;
   Station nextStat; //next station
   final float RADIUS = 20;
   final float DIAMETER = 40; //station's diameter
   final color defColor = color(255, 0, 255); //default color which is magenta
   final color trainHereColor = color(250,250,0);
+  
   
   public boolean trainHere; //is train on the station
   Train currTrainOnStation; //the train currently on the station
@@ -21,6 +25,8 @@ class Station {
   ArrayList<Passenger> passengers = new ArrayList<Passenger>();
   
   ArrayList<Passenger> passToBeRemoved = new ArrayList<Passenger>();
+
+  boolean isLastStation = false;
 
 
   
@@ -63,6 +69,7 @@ class Station {
     currColor = trainHereColor;
     trainHere = true;
     
+    
   }
   
   
@@ -70,23 +77,26 @@ class Station {
   void trainLeaves() {
     currColor = defColor;
     trainHere = false;
+    isTimerOn = false;
     currTrainOnStation = null;
   }
   void startTimer() {
-    timer = second();
+    timer = millis();
     isTimerOn = true;
   }
   
   
   int timer(){
-    if (!trainHere){
-      startTimer();
-    }
-    if (isTimerOn){
-      //System.out.println("timer: " + timer + "second(): " + second());
-      return (timer - second() + 5);
-    }
-    return 0;
+    //if (trainHere){
+    //  startTimer();
+    //}
+ 
+    return (delayTime - (millis() - startTime));
+
+    
+    //if (
+    //return (int) (millis() - startTime / 1000);
+    
   }
   
   

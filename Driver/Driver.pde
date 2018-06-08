@@ -28,19 +28,19 @@ void setup() {
   textSize(40);
 
   //text("Welcome to the Train Simulation", 180, 60);
-  createStations();
+  createStations(); 
   createDirections();
 
   createRoutes();
-  for (int j = 1; j < stations.size() - 1; j++){
-     numbers.add(j);
+  for (int j = 1; j < stations.size() - 1; j++) {
+    numbers.add(j);
   }
-  
+
   //create trains
   Station firstStation = stations.get(0); //always train on first station
-  trains.add(new Train(firstStation.xcord,firstStation.ycord, firstStation));
+  trains.add(new Train(firstStation.xcord, firstStation.ycord, firstStation));
 
-  for (int i = 1; i < 3 ; i++) {
+  for (int i = 1; i < 3; i++) {
     int randTrains = (int) random(0, numbers.size());
     int randInt = numbers.get(randTrains);
     Station randStat = stations.get(randInt);
@@ -48,44 +48,40 @@ void setup() {
     trains.add(new Train(randStat.xcord, randStat.ycord, randStat));
     //trains.get(i).currStat = stations.get(0);
     numbers.remove(randTrains);
-    
   }
-  
+
   //end create trains
-  
-  
+
+
   createLastRoute(); //this add the death station to the stations
-  
+
   //stations.get(stations.size() - 2).nextStat = stations.get
   stations.get(stations.size()-1).setDistsZero();
 
   createPassengersOnStations(); //every station has passengers
-
 }
-  //sop(millis());
-  //sop(hour());
-  //sop(second());
-  //sop(day());
-  //// trains.add(new Train(500,200));
+//sop(millis());
+//sop(hour());
+//sop(second());
+//sop(day());
+//// trains.add(new Train(500,200));
 
 void createLastRoute() {
-  Station deathStation = new Station(1500,350);
-  
-  
+  Station deathStation = new Station(1500, 350);
+
+
   float x1 = stations.get(stations.size() - 1).xcord;
   float y1 = stations.get(stations.size() - 1).ycord;
   float x2 = deathStation.xcord;
   float y2 = deathStation.ycord;
-  
-  
-  routes.add(new Route(x1,y1,x2,y2));
-  
+
+
+  routes.add(new Route(x1, y1, x2, y2));
+
   stations.get(stations.size() -1).nextStat = deathStation; //sets the old last station's next staton to the death station
-  
+
   stations.add(deathStation);
   deathStation.isLastStation = true;
-
-  
 }
 
 void draw() {
@@ -96,11 +92,10 @@ void draw() {
 
     for (Passenger p : stationModeStation.passengers) {
       p.checkMouse(); //continuously check for mouse
-      //p.checkDead() { //if 
-        
-      } 
+      //p.checkDead() { //if
     }
-  
+  }
+
   // sop(frameRate);
   for (Station w : stations) {
     if (mode == 0) {
@@ -120,15 +115,16 @@ void draw() {
       t.display(); //draw the trains
       textSize(20);
       fill(255);
-      text("Number of Passengers Dead: " + passengersDead, 20,100);
+      text("Number of Passengers Dead: " + passengersDead, 20, 100);
     }
-    
-  for (int i = 0; i < trains.size(); i++) {
-    textSize(20);
+  }
+
+  if (mode == 0) {
+    for (int i = 0; i < trains.size(); i++) {
+      textSize(20);
       fill(255);
       text("Number of Passengers on Train " + (i+1) + ": " + trains.get(i).passengerCount, 20, 20 + (20 * i));
-  }
-    
+    }
   }
 }
 
@@ -171,11 +167,9 @@ void displayTimer() { //timer for how long until the train leaves
 
   if (stationModeStation.isTimerOn) {
     text("Train Leaves in: " + (stationModeStation.timer() / 1000 + 1) + " seconds. ", 600, 500);
+  } else {
+    text("Waiting for Train to Arrive...", 600, 500);
   }
-  else {
-    text("Waiting for Train to Arrive...", 600,500);
-  }
-
 }
 
 void createBackButton() { //create a return button
@@ -290,7 +284,7 @@ boolean onTrain(Passenger pass) {
 
 
 boolean toBeKilled(Passenger pass) {
-    return (pass.xcor > 90 && pass.xcor < 320 && pass.ycor < 100 && pass.ycor > 700);
+  return (pass.xcor > 90 && pass.xcor < 320 && pass.ycor < 100 && pass.ycor > 700);
 }
 
 
@@ -313,7 +307,6 @@ void mouseReleased() { //when released,
 
     for (Passenger rem : stationModeStation.passToBeRemoved) {
       stationModeStation.passengers.remove(rem); //remove the passenger from station
-      
     }
   }
 }

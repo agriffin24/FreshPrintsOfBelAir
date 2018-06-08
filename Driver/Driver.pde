@@ -110,7 +110,6 @@ void draw() {
 
   for (Train t : trains) {
     t.move(); //have the trains continuously move
-    ifLastStop();
     if (mode == 0) {
       t.display(); //draw the trains
       textSize(20);

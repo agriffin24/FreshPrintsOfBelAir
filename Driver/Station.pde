@@ -71,7 +71,6 @@ class Station {
 
   }
 
-
   //simulates what happens when train leaves, its current color goes back to default color, and trainhere becomes false
   void trainLeaves() {
     currColor = defColor;

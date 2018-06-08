@@ -69,12 +69,11 @@ void setup() {
 void createLastRoute() {
   Station deathStation = new Station(1500, 350);
 
-
   float x1 = stations.get(stations.size() - 1).xcord;
   float y1 = stations.get(stations.size() - 1).ycord;
   float x2 = deathStation.xcord;
   float y2 = deathStation.ycord;
-
+  
 
   routes.add(new Route(x1, y1, x2, y2));
 
@@ -111,6 +110,7 @@ void draw() {
 
   for (Train t : trains) {
     t.move(); //have the trains continuously move
+    ifLastStop();
     if (mode == 0) {
       t.display(); //draw the trains
       textSize(20);
@@ -127,7 +127,17 @@ void draw() {
     }
   }
 }
-
+void ifLastStop(){
+  Station x = stations.get(stations.size() - 1);
+  if (x.trainHere){
+    System.out.println("lol");
+    for (Train t: trains){
+      if (t.currStat == x){
+         passengersDead += t.passengerCount;
+       } 
+    }
+  }
+}
 void createTrainInStation() { //when the train is in station, draw it
   fill(180, 190, 200);
   rect(90, 100, 220, 600);

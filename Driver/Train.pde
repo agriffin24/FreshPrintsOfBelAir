@@ -153,7 +153,7 @@ If Train arrives at the nextStation, then set it's current station to the newly 
       }
 
       if (isTimerOn) {
-        System.out.println("timer: " + timer + "millis: " + millis());
+        //System.out.println("timer: " + timer + "millis: " + millis());
 
         if (millis() - timer >= timeOnStation) {
           isTimerOn = false;
@@ -169,7 +169,7 @@ If Train arrives at the nextStation, then set it's current station to the newly 
       removeAllPassengers();
     }
   }
-
+  
   void removeAllPassengers() {
     for (int i = 0; i < passengerCount; i++) {
       trainPassengers.pop();

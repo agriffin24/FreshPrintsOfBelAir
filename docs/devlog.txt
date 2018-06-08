@@ -41,13 +41,13 @@ We didn't want to have just a simple built-in shape for our train, but to have a
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+As of right now, we are still in the process of fixing a small issue concerning the death of people about they reach what we call the "death station."
 
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * We can create any shape to our liking in Processing, which is really beneficial to our project, as we want the layout to simulate what looks to be an actual train moving along the screen.
 
-* We also learned how to properly use a timer to count down the amount of time left before a train leaves a station and we used to ensure that a train would only stay at a station for 5 seconds before moving to the next station.  
+* We also learned how to properly use a timer to count down the amount of time left before a train leaves a station and we used to ensure that a train would only stay at a station for 7 seconds before moving to the next station.  
 
 
 MID-DEVELOPMENT DESIGN CHANGES
@@ -57,7 +57,8 @@ We decided to ignore/de-prioritize the passenger's entitlement to sit down. Inst
 
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+The biggest lesson that we will take away from this Final Project is the unparalleled importance of finding a place where we can meet up. We were far more productive when we were discussing the project at the same location than we were when we were at our own homes communicating via the internet. 
+Another huge lesson from this Final Project was that although we didn't plan ourselves poorly, we could have started coding far more effectively the day we got the green light for the project. If this had happened, we likely would have had more opportunities to add even more functionalities to our program.
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||

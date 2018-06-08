@@ -4,15 +4,17 @@ import java.util.*;
 
 ArrayList<Passenger> passengers = new ArrayList<Passenger>();
 ArrayList<Station> stations= new ArrayList<Station>();
-
+ArrayList<Integer> numbers = new ArrayList<Integer>();
 
 
 ArrayList<Route> routes = new ArrayList<Route>();
-ArrayList<Train> trees = new ArrayList<Train>();
+ArrayList<Train> trains = new ArrayList<Train>();
 float mode = 0; // 0 map mode, 1 = station mode
 
 PFont font;
 color white = color(255, 255, 255);
+
+int passengersDead = 0;
 
 Station stationModeStation = null;
 
@@ -28,19 +30,54 @@ void setup() {
   //text("Welcome to the Train Simulation", 180, 60);
   createStations();
   createRoutes();
+  for (int j = 1; j < stations.size() - 1; j++){
+     numbers.add(j);
+  }
+  
+  
+  
+  Station firstStation = stations.get(0); //always train on first station
+  trains.add(new Train(firstStation.xcord,firstStation.ycord, firstStation));
+  
 
-
-  Station firstStation = stations.get(0); //first station
-  trees.add(new Train(firstStation.xcord, firstStation.ycord, firstStation));
-  trees.get(0).currStat = stations.get(0);
+  for (int i = 1; i < 3 ; i++) {
+    int randTrains = (int) random(0, numbers.size());
+    int randInt = numbers.get(randTrains);
+    Station randStat = stations.get(randInt);
+    //Station firstStation = stations.get(0); //first station
+    trains.add(new Train(randStat.xcord, randStat.ycord, randStat));
+    //trains.get(i).currStat = stations.get(0);
+    numbers.remove(randTrains);
+    
+  }
+  
+  createLastRoute();
 
   createPassengersOnStations(); //every station has passengers
 
+}
   //sop(millis());
   //sop(hour());
   //sop(second());
   //sop(day());
-  //// trees.add(new Train(500,200));
+  //// trains.add(new Train(500,200));
+
+void createLastRoute() {
+  Station deathStation = new Station(1500,350);
+  
+  
+  float x1 = stations.get(stations.size() - 1).xcord;
+  float y1 = stations.get(stations.size() - 1).ycord;
+  float x2 = deathStation.xcord;
+  float y2 = deathStation.ycord;
+  
+  
+  routes.add(new Route(x1,y1,x2,y2));
+  
+  stations.add(deathStation);
+  deathStation.isLastStation = true;
+
+  
 }
 
 void draw() {
@@ -51,8 +88,11 @@ void draw() {
 
     for (Passenger p : stationModeStation.passengers) {
       p.checkMouse(); //continuously check for mouse
+      //p.checkDead() { //if 
+        
+      } 
     }
-  }
+  
   // sop(frameRate);
   for (Station w : stations) {
     if (mode == 0) {
@@ -66,11 +106,21 @@ void draw() {
     }
   }
 
-  for (Train t : trees) {
+  for (Train t : trains) {
     t.move(); //have the trains continuously move
     if (mode == 0) {
       t.display(); //draw the trains
+      textSize(20);
+      fill(255);
+      text("Number of Passengers Dead: " + passengersDead, 20,100);
     }
+    
+  for (int i = 0; i < trains.size(); i++) {
+    textSize(20);
+      fill(255);
+      text("Number of Passengers on Train " + (i+1) + ": " + trains.get(i).passengerCount, 20, 20 + (20 * i));
+  }
+    
   }
 }
 
@@ -147,9 +197,9 @@ void createStations() { // points to be our station
   stations.add(new Station(600, 600));
   stations.add(new Station(700, 600));
   stations.add(new Station(800, 500));
-  stations.add(new Station(900, 400));
+  stations.add(new Station(900, 350));
 
-  stations.get(stations.size() - 1).isLastStation = true;
+  //stations.get(stations.size() - 1).isLastStation = true;
 
   createDirections();
 }
@@ -232,6 +282,14 @@ boolean onTrain(Passenger pass) {
   return false;
 }
 
+
+boolean toBeKilled(Passenger pass) {
+    return (pass.xcor > 90 && pass.xcor < 320 && pass.ycor < 100 && pass.ycor > 700);
+}
+
+
+
+
 void mouseReleased() { //when released,
   if (mode == 1) {
     for (Passenger p : stationModeStation.passengers) {
@@ -241,10 +299,15 @@ void mouseReleased() { //when released,
         stationModeStation.currTrainOnStation.addPassenger(p);
         stationModeStation.passToBeRemoved.add(p); //add the ones on the train to be removed
       }
+      if (toBeKilled(p)) {
+        stationModeStation.passToBeRemoved.add(p); //add the ones on the train to be removed
+        passengersDead +=1;
+      }
     }
 
     for (Passenger rem : stationModeStation.passToBeRemoved) {
       stationModeStation.passengers.remove(rem); //remove the passenger from station
+      
     }
   }
 }
